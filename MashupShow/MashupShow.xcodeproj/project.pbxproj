@@ -1,0 +1,296 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1849126C1574792600CC9374 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1849126B1574792600CC9374 /* Cocoa.framework */; };
+		184912761574792600CC9374 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 184912741574792600CC9374 /* InfoPlist.strings */; };
+		184912781574792600CC9374 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 184912771574792600CC9374 /* main.m */; };
+		1849127C1574792600CC9374 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1849127A1574792600CC9374 /* Credits.rtf */; };
+		1849127F1574792600CC9374 /* TBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849127E1574792600CC9374 /* TBAppDelegate.m */; };
+		184912821574792600CC9374 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184912801574792600CC9374 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		184912671574792600CC9374 /* MashupShow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MashupShow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1849126B1574792600CC9374 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		1849126E1574792600CC9374 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		1849126F1574792600CC9374 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		184912701574792600CC9374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		184912731574792600CC9374 /* MashupShow-Info.plist */ = {isa = PBXFileReference; path = "MashupShow-Info.plist"; sourceTree = "<group>"; };
+		184912751574792600CC9374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		184912771574792600CC9374 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		184912791574792600CC9374 /* MashupShow-Prefix.pch */ = {isa = PBXFileReference; path = "MashupShow-Prefix.pch"; sourceTree = "<group>"; };
+		1849127B1574792600CC9374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		1849127D1574792600CC9374 /* TBAppDelegate.h */ = {isa = PBXFileReference; path = TBAppDelegate.h; sourceTree = "<group>"; };
+		1849127E1574792600CC9374 /* TBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAppDelegate.m; sourceTree = "<group>"; };
+		184912811574792600CC9374 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		184912641574792600CC9374 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1849126C1574792600CC9374 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1849125C1574792600CC9374 = {
+			isa = PBXGroup;
+			children = (
+				184912711574792600CC9374 /* MashupShow */,
+				1849126A1574792600CC9374 /* Frameworks */,
+				184912681574792600CC9374 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		184912681574792600CC9374 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				184912671574792600CC9374 /* MashupShow.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1849126A1574792600CC9374 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1849126B1574792600CC9374 /* Cocoa.framework */,
+				1849126D1574792600CC9374 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1849126D1574792600CC9374 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1849126E1574792600CC9374 /* AppKit.framework */,
+				1849126F1574792600CC9374 /* CoreData.framework */,
+				184912701574792600CC9374 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		184912711574792600CC9374 /* MashupShow */ = {
+			isa = PBXGroup;
+			children = (
+				1849127D1574792600CC9374 /* TBAppDelegate.h */,
+				1849127E1574792600CC9374 /* TBAppDelegate.m */,
+				184912801574792600CC9374 /* MainMenu.xib */,
+				184912721574792600CC9374 /* Supporting Files */,
+			);
+			path = MashupShow;
+			sourceTree = "<group>";
+		};
+		184912721574792600CC9374 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				184912731574792600CC9374 /* MashupShow-Info.plist */,
+				184912741574792600CC9374 /* InfoPlist.strings */,
+				184912771574792600CC9374 /* main.m */,
+				184912791574792600CC9374 /* MashupShow-Prefix.pch */,
+				1849127A1574792600CC9374 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		184912661574792600CC9374 /* MashupShow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 184912851574792600CC9374 /* Build configuration list for PBXNativeTarget "MashupShow" */;
+			buildPhases = (
+				184912631574792600CC9374 /* Sources */,
+				184912641574792600CC9374 /* Frameworks */,
+				184912651574792600CC9374 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MashupShow;
+			productName = MashupShow;
+			productReference = 184912671574792600CC9374 /* MashupShow.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1849125E1574792600CC9374 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = TB;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = 184912611574792600CC9374 /* Build configuration list for PBXProject "MashupShow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 1849125C1574792600CC9374;
+			productRefGroup = 184912681574792600CC9374 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				184912661574792600CC9374 /* MashupShow */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		184912651574792600CC9374 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184912761574792600CC9374 /* InfoPlist.strings in Resources */,
+				1849127C1574792600CC9374 /* Credits.rtf in Resources */,
+				184912821574792600CC9374 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		184912631574792600CC9374 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				184912781574792600CC9374 /* main.m in Sources */,
+				1849127F1574792600CC9374 /* TBAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		184912741574792600CC9374 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				184912751574792600CC9374 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		1849127A1574792600CC9374 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1849127B1574792600CC9374 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		184912801574792600CC9374 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				184912811574792600CC9374 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		184912831574792600CC9374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		184912841574792600CC9374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		184912861574792600CC9374 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MashupShow/MashupShow-Prefix.pch";
+				INFOPLIST_FILE = "MashupShow/MashupShow-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		184912871574792600CC9374 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MashupShow/MashupShow-Prefix.pch";
+				INFOPLIST_FILE = "MashupShow/MashupShow-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		184912611574792600CC9374 /* Build configuration list for PBXProject "MashupShow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184912831574792600CC9374 /* Debug */,
+				184912841574792600CC9374 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		184912851574792600CC9374 /* Build configuration list for PBXNativeTarget "MashupShow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				184912861574792600CC9374 /* Debug */,
+				184912871574792600CC9374 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1849125E1574792600CC9374 /* Project object */;
+}
