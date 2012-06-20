@@ -1,37 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="8Ab-dI-Pqc">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
-        <scene sceneID="emH-qp-jnf">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zu4-dm-uun" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <navigationController definesPresentationContext="YES" id="8Ab-dI-Pqc" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="yui-5P-MLr">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="F1P-dY-vR6"/>
-                    </connections>
-                </navigationController>
-            </objects>
-            <point key="canvasLocation" x="-307" y="-219"/>
-        </scene>
         <!--Top View Controller - Main Page-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
                 <viewController id="2" customClass="TopViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Gev-Wa-X10">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="请求地址：" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="yB5-x0-WML">
@@ -84,16 +69,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="4MK-Ti-bsP" kind="push" identifier="authPush" id="buK-NP-30l"/>
+                                            <action selector="authAction:" destination="2" eventType="touchUpInside" id="YZb-ix-Nem"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="8Rj-Mw-txj">
-                                        <rect key="frame" x="158" y="8" width="147" height="21"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -102,42 +80,13 @@
                     <navigationItem key="navigationItem" title="Main Page" id="kfT-eG-g1f"/>
                     <connections>
                         <outlet property="authButton" destination="Zrn-Hi-se7" id="CpB-8Y-g3y"/>
-                        <outlet property="messageAlertLabel" destination="8Rj-Mw-txj" id="S37-PG-jKE"/>
                         <outlet property="reqButton" destination="hwo-nZ-2zf" id="91p-vd-yCh"/>
                         <outlet property="reqTextField" destination="ifF-TB-eCc" id="pY5-d8-tHK"/>
                         <outlet property="responseContentView" destination="ILi-ED-FtG" id="wVe-gb-Xnk"/>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="166" y="-213"/>
-        </scene>
-        <!--Top Auth View Controller-->
-        <scene sceneID="YaA-Pi-mgE">
-            <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qBf-Ot-oWn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="4MK-Ti-bsP" customClass="TopAuthViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="M60-XW-1ne">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" id="D5N-80-GSm">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <connections>
-                                    <outlet property="delegate" destination="4MK-Ti-bsP" id="qnR-tv-KxT"/>
-                                </connections>
-                            </webView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="eGX-M7-ABB"/>
-                    <connections>
-                        <outlet property="authWebView" destination="D5N-80-GSm" id="wJM-we-BKg"/>
-                    </connections>
-                </viewController>
-            </objects>
-            <point key="canvasLocation" x="677" y="-213"/>
+            <point key="canvasLocation" x="-70" y="-198"/>
         </scene>
     </scenes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

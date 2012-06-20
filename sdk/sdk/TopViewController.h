@@ -9,8 +9,6 @@
 #import <UIKit/UIKit.h>
 #import "TopAppDelegate.h"
 #import "TopIOSClient.h"
-#import "TopConstants.h"
-#import "TopAuthViewController.h"
 
 @interface TopViewController : UIViewController<UITextFieldDelegate>
 
@@ -18,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *reqButton;
 @property (weak, nonatomic) IBOutlet UIButton *authButton;
 @property (weak, nonatomic) IBOutlet UITextView *responseContentView;
-@property (weak, nonatomic) IBOutlet UILabel *messageAlertLabel;
+
+- (IBAction)authAction:(id)sender;
 
 @end

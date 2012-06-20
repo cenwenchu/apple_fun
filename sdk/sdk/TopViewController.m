@@ -19,7 +19,6 @@
 @synthesize reqButton;
 @synthesize authButton;
 @synthesize responseContentView;
-@synthesize messageAlertLabel;
 
 
 
@@ -30,36 +29,6 @@
     }
     return NO;
 }
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([[segue identifier] isEqualToString:@"authPush"]) {
-        
-        //UIWindow *win = [[self view] window];
-         
-        //这个过程里面对方controller都还没有创建view
-        TopAuthViewController *authViewController = [segue destinationViewController];
-        [authViewController setCommand:@"auth"];
-        
-//        UIWebView *authview = [authViewController authWebView];
-//        
-//        if(authview == Nil)
-//        {
-//            UIWebView *webView = [[UIWebView alloc] initWithFrame:[[authViewController view] bounds]]; 
-//            [webView setBackgroundColor:[UIColor redColor]];
-//            webView.scalesPageToFit = YES;
-//            
-//            [authViewController setAuthWebView:webView];
-//            [webView setDelegate:authViewController];
-//            
-//        }
-//        
-//        [win addSubview:[authViewController authWebView]];
-//        [win makeKeyAndVisible];
-        
-    }
-}
-
-
 
 - (IBAction)sendRequestAction:(id)sender {
    
@@ -88,7 +57,7 @@
         }
         
         TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
-        [iosClient api:@"rest" method:@"POST" params:params target:self cb:@selector(showApiResponse:)];
+        [iosClient api:false method:@"POST" params:params target:self cb:@selector(showApiResponse:)];
         
     }
     else {
@@ -109,35 +78,16 @@
     [message show];
 }
  
--(void)showApiResponse:(NSData *)data
+-(void)showApiResponse:(id)data
 {
-    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-    
-    [responseContentView setText:[NSString stringWithUTF8String:[data bytes]]];
-}
-
--(void)messageNotify:(NSNotification *)paramNotification
-{
-    NSLog(@"message received");
-    NSDictionary *userInfo = [paramNotification userInfo];
-    
-    id error = [userInfo objectForKey:@"error"];
-    
-    if (error)
+    if ([data isKindOfClass:[NSString class]])
     {
-        NSMutableString *errMsg = [[NSMutableString alloc]init];
-        [errMsg appendString:@"error code : "];
-        [errMsg appendFormat:@"%d",[(NSError *)error code]];
-        [messageAlertLabel setText:errMsg];
+        NSLog(@"%@",data);
+        [responseContentView setText:data];
     }
-    {
-        [messageAlertLabel setText:@"a new message"];
-        [messageAlertLabel setTextColor:[UIColor colorWithRed:0.5f
-                                                        green:0.0f blue:0.5f alpha:1.0f]];
-        
-        [self message:@"you got response from api server"];    
+    else {
+        NSLog(@"%@",[(NSError *)data userInfo]);
     }
-    
 }
 
 
@@ -145,8 +95,6 @@
 {
     [super viewDidLoad];
     
-    // register notification
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(messageNotify:) name:MessageArriveNotification  object:self];    
 }
 
 - (void)viewDidUnload
@@ -155,9 +103,6 @@
     [self setReqButton:nil];
     [self setResponseContentView:nil];
     [self setAuthButton:nil];
-    [self setMessageAlertLabel:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
     
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -173,4 +118,8 @@
 }
 
 
+- (IBAction)authAction:(id)sender {
+    TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
+    [iosClient auth:self];
+}
 @end

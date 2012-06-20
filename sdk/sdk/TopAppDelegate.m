@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _iosClient = [[TopIOSClient alloc] initWithEntryUrl:@"https://oauth.taobao.com/authorize" apiurl:@"http://gw.api.taobao.com/router/rest" appKey:@"12131533" appSecret:@"0172b897b59ecf8e69ba1a21f37c7e62"];
+    _iosClient = [[TopIOSClient alloc] initIOSClient:@"12131533" appSecret:@"0172b897b59ecf8e69ba1a21f37c7e62" callbackUrl:nil];
     
     return YES;
 }
