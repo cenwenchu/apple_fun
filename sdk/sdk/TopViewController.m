@@ -30,6 +30,11 @@
     return NO;
 }
 
+- (IBAction)authAction:(id)sender {
+    TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
+    [iosClient auth:self];
+}
+
 - (IBAction)sendRequestAction:(id)sender {
    
     [responseContentView setText:nil];
@@ -118,8 +123,4 @@
 }
 
 
-- (IBAction)authAction:(id)sender {
-    TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
-    [iosClient auth:self];
-}
 @end

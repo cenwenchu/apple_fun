@@ -20,6 +20,8 @@
 
     @property(copy,atomic) NSString *authEntryUrl;
     @property(copy,atomic) NSString *apiEntryUrl;
+    @property(copy,atomic) NSString *sysName;
+    @property(copy,atomic) NSString *sysVersion;
 
     @property NSOperationQueue *queue;
     @property(strong,nonatomic)UIWebView *authView;
@@ -38,6 +40,8 @@
 @synthesize trackId = _trackId;
 @synthesize queue;
 @synthesize authView;
+@synthesize sysName;
+@synthesize sysVersion;
 
 -(id)initIOSClient:(NSString *)appKey appSecret:(NSString *)appSecret callbackUrl:(NSString *)callbackUrl
 {
@@ -48,6 +52,9 @@
         [self setAppKey:appKey];
         [self setAppSecret:appSecret];
         [self setCallbackUrl:callbackUrl];
+        
+        [self setSysName:[[UIDevice currentDevice] systemName]];
+        [self setSysVersion:[[UIDevice currentDevice] systemVersion]];
         
         queue = [[NSOperationQueue alloc] init];
         authView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
@@ -69,6 +76,8 @@
     [self setApiEntryUrl:nil];
     [self setQueue:nil];
     [self setAuthView:nil];
+    [self setSysVersion:nil];
+    [self setSysName:nil];
 }
 
 -(void)auth:(UIViewController *) currentViewController;
@@ -114,6 +123,7 @@
 -(void)api:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb;
 {
     NSMutableDictionary *reqParams = [[NSMutableDictionary alloc] init];
+    NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
     
     [reqParams addEntriesFromDictionary:params];
     [reqParams setObject:@"json" forKey:@"format"];
@@ -134,6 +144,12 @@
     
     if (_topAuth)
         [reqParams setObject:[_topAuth access_token]  forKey:@"session"];
+    
+    if (sysVersion)
+        [headers setObject:sysVersion forKey:@"client_sysVersion"];
+        
+    if (sysName)
+        [headers setObject:sysName forKey:@"client_sysName"];
     
     [TopIOSUtil sign:reqParams appSecret:_appSecret];
     
@@ -157,6 +173,7 @@
     NSData *d = [body dataUsingEncoding:NSUTF8StringEncoding];
     
     [req setHTTPMethod:method];
+    [req setAllHTTPHeaderFields:headers];
     [req setHTTPBody:d];
     
     
