@@ -50,8 +50,10 @@
         [self setCallbackUrl:callbackUrl];
         
         queue = [[NSOperationQueue alloc] init];
-        authView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        authView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
         [authView setDelegate:self];
+        [authView setScalesPageToFit:YES];
+        [authView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
     }
     
     return self;
@@ -205,7 +207,6 @@
 //authView show or hide
 - (void)showAuthView
 {
-    [self sizeToFitOrientation:[self currentOrientation]];
     
     UIWindow *window = [UIApplication sharedApplication].keyWindow;
 	if (!window)
@@ -219,51 +220,6 @@
 - (void)hideAuthView
 { 
     [authView removeFromSuperview];
-}
-
-
-- (UIInterfaceOrientation)currentOrientation
-{
-    return [UIApplication sharedApplication].statusBarOrientation;
-}
-
-- (void)sizeToFitOrientation:(UIInterfaceOrientation)orientation
-{
-    [authView setTransform:CGAffineTransformIdentity];
-    
-    if (UIInterfaceOrientationIsLandscape(orientation))
-    {
-        [authView setFrame:CGRectMake(0, 0, 480, 320)];
-    }
-    else
-    {
-        [authView setFrame:CGRectMake(0, 0, 320, 480)];
-    }
-    
-    [authView setCenter:CGPointMake(160, 240)];
-    
-    [authView setTransform:[self transformForOrientation:orientation]];
-    
-}
-
-- (CGAffineTransform)transformForOrientation:(UIInterfaceOrientation)orientation
-{  
-	if (orientation == UIInterfaceOrientationLandscapeLeft)
-    {
-		return CGAffineTransformMakeRotation(-M_PI / 2);
-	}
-    else if (orientation == UIInterfaceOrientationLandscapeRight)
-    {
-		return CGAffineTransformMakeRotation(M_PI / 2);
-	}
-    else if (orientation == UIInterfaceOrientationPortraitUpsideDown)
-    {
-		return CGAffineTransformMakeRotation(-M_PI);
-	}
-    else
-    {
-		return CGAffineTransformIdentity;
-	}
 }
 
 @end
