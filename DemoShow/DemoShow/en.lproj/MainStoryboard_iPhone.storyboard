@@ -1,24 +1,100 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.0" toolsVersion="1906" systemVersion="11A511" targetRuntime="iOS.CocoaTouch" nextObjectID="6" propertyAccessControl="none" initialViewController="2">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="1.1" toolsVersion="2182" systemVersion="11E53" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="2">
     <dependencies>
+        <deployment defaultVersion="1296" identifier="iOS"/>
         <development defaultVersion="4200" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="902"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1181"/>
     </dependencies>
     <scenes>
+        <!--View Controller-->
         <scene sceneID="5">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
-                <viewController id="2" customClass="TBViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="" id="2" customClass="TBViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" id="lpx-Cq-Lsn">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="DemoShow" id="eZs-LG-fY0"/>
+                                </items>
+                            </navigationBar>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="S2E-Al-eeB">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <items>
+                                    <barButtonItem title="back" id="O8i-x7-DCi">
+                                        <connections>
+                                            <action selector="goBack" destination="tn7-45-6t0" id="FFR-Vb-W0R"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="forward" id="x0M-2x-xfV">
+                                        <connections>
+                                            <action selector="goForward" destination="tn7-45-6t0" id="1KR-Q7-yRV"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="send request" id="wiF-zA-A7G">
+                                        <connections>
+                                            <action selector="sendRequestBtnAction:" destination="2" id="vsx-67-oq8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" id="tn7-45-6t0">
+                                <rect key="frame" x="0.0" y="335" width="320" height="81"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </webView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="voQ-dQ-Gdn">
+                                <rect key="frame" x="0.0" y="81" width="320" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="2" id="2TZ-Xw-6B4"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Qdv-ot-yss">
+                                <rect key="frame" x="5" y="111" width="315" height="216"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="backButton" destination="O8i-x7-DCi" id="del-K6-qX9"/>
+                        <outlet property="contentView" destination="tn7-45-6t0" id="nEM-dv-m9B"/>
+                        <outlet property="contentView2" destination="Qdv-ot-yss" id="Y1e-2v-heD"/>
+                        <outlet property="destTextField" destination="voQ-dQ-Gdn" id="gvv-YF-Scw"/>
+                        <outlet property="forwardButton" destination="x0M-2x-xfV" id="vr6-Qx-rfB"/>
+                        <outlet property="sendRequestButton" destination="wiF-zA-A7G" id="kpv-wu-VV9"/>
+                    </connections>
                 </viewController>
             </objects>
+            <point key="canvasLocation" x="13" y="-61"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="TBViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TBViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="backButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="contentView" candidateClass="UIWebView"/>
+                <relationship kind="outlet" name="contentView2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="destTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="forwardButton" candidateClass="UIBarButtonItem"/>
+                <relationship kind="outlet" name="sendRequestButton" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

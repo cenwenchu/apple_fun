@@ -1,13 +1,12 @@
 //
 //  TBAppDelegate.h
-//  MashupShow
+//  ObjTest
 //
-//  Created by cenwenchu on 12-5-29.
+//  Created by a p p le on 12-5-21.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
 #import <Cocoa/Cocoa.h>
-#import <WebKit/WebKit.h>
 
 @interface TBAppDelegate : NSObject <NSApplicationDelegate>
 

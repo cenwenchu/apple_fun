@@ -13,6 +13,8 @@
 		1849127C1574792600CC9374 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 1849127A1574792600CC9374 /* Credits.rtf */; };
 		1849127F1574792600CC9374 /* TBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849127E1574792600CC9374 /* TBAppDelegate.m */; };
 		184912821574792600CC9374 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 184912801574792600CC9374 /* MainMenu.xib */; };
+		1849128B15747B8000CC9374 /* TOPAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1849128A15747B8000CC9374 /* TOPAuth.m */; };
+		188B902615788AA0008A23CE /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188B902515788AA0008A23CE /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,14 +23,17 @@
 		1849126E1574792600CC9374 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		1849126F1574792600CC9374 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		184912701574792600CC9374 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		184912731574792600CC9374 /* MashupShow-Info.plist */ = {isa = PBXFileReference; path = "MashupShow-Info.plist"; sourceTree = "<group>"; };
+		184912731574792600CC9374 /* MashupShow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MashupShow-Info.plist"; sourceTree = "<group>"; };
 		184912751574792600CC9374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		184912771574792600CC9374 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		184912791574792600CC9374 /* MashupShow-Prefix.pch */ = {isa = PBXFileReference; path = "MashupShow-Prefix.pch"; sourceTree = "<group>"; };
+		184912791574792600CC9374 /* MashupShow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MashupShow-Prefix.pch"; sourceTree = "<group>"; };
 		1849127B1574792600CC9374 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
-		1849127D1574792600CC9374 /* TBAppDelegate.h */ = {isa = PBXFileReference; path = TBAppDelegate.h; sourceTree = "<group>"; };
+		1849127D1574792600CC9374 /* TBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBAppDelegate.h; sourceTree = "<group>"; };
 		1849127E1574792600CC9374 /* TBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAppDelegate.m; sourceTree = "<group>"; };
 		184912811574792600CC9374 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1849128915747B8000CC9374 /* TOPAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TOPAuth.h; path = ../TOPAuth.h; sourceTree = "<group>"; };
+		1849128A15747B8000CC9374 /* TOPAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TOPAuth.m; path = ../TOPAuth.m; sourceTree = "<group>"; };
+		188B902515788AA0008A23CE /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +41,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				188B902615788AA0008A23CE /* WebKit.framework in Frameworks */,
 				1849126C1574792600CC9374 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -72,6 +78,7 @@
 		1849126D1574792600CC9374 /* Other Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				188B902515788AA0008A23CE /* WebKit.framework */,
 				1849126E1574792600CC9374 /* AppKit.framework */,
 				1849126F1574792600CC9374 /* CoreData.framework */,
 				184912701574792600CC9374 /* Foundation.framework */,
@@ -82,6 +89,8 @@
 		184912711574792600CC9374 /* MashupShow */ = {
 			isa = PBXGroup;
 			children = (
+				1849128915747B8000CC9374 /* TOPAuth.h */,
+				1849128A15747B8000CC9374 /* TOPAuth.m */,
 				1849127D1574792600CC9374 /* TBAppDelegate.h */,
 				1849127E1574792600CC9374 /* TBAppDelegate.m */,
 				184912801574792600CC9374 /* MainMenu.xib */,
@@ -168,6 +177,7 @@
 			files = (
 				184912781574792600CC9374 /* main.m in Sources */,
 				1849127F1574792600CC9374 /* TBAppDelegate.m in Sources */,
+				1849128B15747B8000CC9374 /* TOPAuth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -289,6 +299,7 @@
 				184912871574792600CC9374 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

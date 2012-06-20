@@ -14,7 +14,6 @@
 		188B904415789758008A23CE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 188B904315789758008A23CE /* main.m */; };
 		188B904815789758008A23CE /* TBAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 188B904715789758008A23CE /* TBAppDelegate.m */; };
 		188B904B15789758008A23CE /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188B904915789758008A23CE /* MainStoryboard_iPhone.storyboard */; };
-		188B904E15789758008A23CE /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188B904C15789758008A23CE /* MainStoryboard_iPad.storyboard */; };
 		188B905115789758008A23CE /* TBViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188B905015789758008A23CE /* TBViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -23,15 +22,14 @@
 		188B903715789758008A23CE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		188B903915789758008A23CE /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		188B903B15789758008A23CE /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		188B903F15789758008A23CE /* DemoShow-Info.plist */ = {isa = PBXFileReference; path = "DemoShow-Info.plist"; sourceTree = "<group>"; };
+		188B903F15789758008A23CE /* DemoShow-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "DemoShow-Info.plist"; sourceTree = "<group>"; };
 		188B904115789758008A23CE /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		188B904315789758008A23CE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		188B904515789758008A23CE /* DemoShow-Prefix.pch */ = {isa = PBXFileReference; path = "DemoShow-Prefix.pch"; sourceTree = "<group>"; };
-		188B904615789758008A23CE /* TBAppDelegate.h */ = {isa = PBXFileReference; path = TBAppDelegate.h; sourceTree = "<group>"; };
+		188B904515789758008A23CE /* DemoShow-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "DemoShow-Prefix.pch"; sourceTree = "<group>"; };
+		188B904615789758008A23CE /* TBAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBAppDelegate.h; sourceTree = "<group>"; };
 		188B904715789758008A23CE /* TBAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBAppDelegate.m; sourceTree = "<group>"; };
 		188B904A15789758008A23CE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
-		188B904D15789758008A23CE /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
-		188B904F15789758008A23CE /* TBViewController.h */ = {isa = PBXFileReference; path = TBViewController.h; sourceTree = "<group>"; };
+		188B904F15789758008A23CE /* TBViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TBViewController.h; sourceTree = "<group>"; };
 		188B905015789758008A23CE /* TBViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TBViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -82,7 +80,6 @@
 				188B904615789758008A23CE /* TBAppDelegate.h */,
 				188B904715789758008A23CE /* TBAppDelegate.m */,
 				188B904915789758008A23CE /* MainStoryboard_iPhone.storyboard */,
-				188B904C15789758008A23CE /* MainStoryboard_iPad.storyboard */,
 				188B904F15789758008A23CE /* TBViewController.h */,
 				188B905015789758008A23CE /* TBViewController.m */,
 				188B903E15789758008A23CE /* Supporting Files */,
@@ -154,7 +151,6 @@
 			files = (
 				188B904215789758008A23CE /* InfoPlist.strings in Resources */,
 				188B904B15789758008A23CE /* MainStoryboard_iPhone.storyboard in Resources */,
-				188B904E15789758008A23CE /* MainStoryboard_iPad.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -188,14 +184,6 @@
 				188B904A15789758008A23CE /* en */,
 			);
 			name = MainStoryboard_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		188B904C15789758008A23CE /* MainStoryboard_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				188B904D15789758008A23CE /* en */,
-			);
-			name = MainStoryboard_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -289,6 +277,7 @@
 				188B905615789758008A23CE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

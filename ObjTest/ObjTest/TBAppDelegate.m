@@ -1,8 +1,8 @@
 //
 //  TBAppDelegate.m
-//  MashupShow
+//  ObjTest
 //
-//  Created by cenwenchu on 12-5-29.
+//  Created by a p p le on 12-5-21.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
@@ -15,13 +15,6 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification
 {
     // Insert code here to initialize your application
-    WebView *wv = [[WebView alloc] init];
-    
-    NSURL *url = [[NSURL alloc] initWithString:@"open.taobao.com"];
-    
-    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:url];
-    
-    wv.
 }
 
 @end
