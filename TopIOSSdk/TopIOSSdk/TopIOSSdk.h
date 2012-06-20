@@ -11,7 +11,9 @@
 
 @protocol TopIOSSdk <NSObject>
 
+//授权接口
 -(void)auth:(UIViewController *) currentViewController;
+//调用api
 -(void)api:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb;
 
 @end

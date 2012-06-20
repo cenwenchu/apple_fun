@@ -11,7 +11,7 @@
 
 @interface TopIOSClient : NSObject <TopIOSSdk,UIWebViewDelegate>
 
+//初始化ios客户端
 -(id)initIOSClient:(NSString *)appKey appSecret:(NSString *)appSecret callbackUrl:(NSString *)callbackUrl;
--(void)oauthCallback:(NSString *)access_token;
 
 @end
