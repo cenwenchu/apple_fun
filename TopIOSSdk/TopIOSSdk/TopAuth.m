@@ -15,7 +15,8 @@
 @synthesize mobile_token;
 @synthesize token_expire_time;
 @synthesize refresh_expire_time;
-@synthesize create_time;
+@synthesize beg_time;
+@synthesize refresh_interval;
 
 @synthesize token_expire_time_r1;
 @synthesize token_expire_time_r2;
@@ -25,15 +26,16 @@
 @synthesize user_id;
 @synthesize user_name;
 
--(id)initTopAuthFromString:(NSString*) authString;
+-(id)initTopAuthFromString:(NSString*) authString
 {
-    if(self = [super init])
+    if((self = [super init]))
     {
         if (authString)
         {
             NSArray * chunks = [authString componentsSeparatedByString:@"&"];
             
-            create_time = [NSDate date];
+            beg_time = [NSDate date];
+            refresh_interval = 0;
             
             for(NSString* item in chunks)
             {
@@ -111,6 +113,18 @@
                 }
                 
             }
+            
+            if (token_expire_time_r1 && token_expire_time_r1 > 0)
+                refresh_interval = token_expire_time_r1;
+            if (token_expire_time_r2 && token_expire_time_r2 > 0 && token_expire_time_r2 < refresh_interval)
+                refresh_interval = token_expire_time_r2;
+            if (token_expire_time_w1 && token_expire_time_w1 > 0 && token_expire_time_w1 < refresh_interval)
+                refresh_interval = token_expire_time_w1;
+            if (token_expire_time_w2 && token_expire_time_w2 > 0 && token_expire_time_w2 < refresh_interval)
+                refresh_interval = token_expire_time_w2;
+            
+            NSLog(@"refresh seconds : %@ s.",refresh_interval);
+            NSLog(@"refresh r1 seconds : %@ s.",token_expire_time_r1);
         }
     }
     
@@ -125,7 +139,7 @@
     [self setMobile_token:nil];
     [self setToken_expire_time:nil];
     [self setRefresh_expire_time:nil];
-    [self setCreate_time:nil];
+    [self setBeg_time:nil];
 }
 
 @end

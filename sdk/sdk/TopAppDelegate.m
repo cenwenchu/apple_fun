@@ -22,7 +22,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _iosClient = [[TopIOSClient alloc] initIOSClient:@"12131533" appSecret:@"0172b897b59ecf8e69ba1a21f37c7e62" callbackUrl:nil];
+    _iosClient = [[TopIOSClient alloc] initIOSClient:@"12131533" appSecret:@"0172b897b59ecf8e69ba1a21f37c7e62" callbackUrl:nil needAutoRefreshToken:TRUE];
     
     return YES;
 }

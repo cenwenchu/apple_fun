@@ -4,42 +4,42 @@
    version = "1.0">
    <FileBreakpoints>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "TopIOSSdk/TopAuth.m"
-         timestampString = "361880519.888931"
+         filePath = "MyTest/TopAppDelegate.m"
+         timestampString = "361936882.180686"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "126"
-         endingLineNumber = "126"
-         landmarkName = "-initTopAuthFromString:"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-connectionDidFinishLoading:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "TopIOSSdk/TopAuth.m"
-         timestampString = "361950779.622664"
+         filePath = "MyTest/TopAppDelegate.m"
+         timestampString = "361936727.338192"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "31"
-         endingLineNumber = "31"
-         landmarkName = "-initTopAuthFromString:"
+         startingLineNumber = "39"
+         endingLineNumber = "39"
+         landmarkName = "-connection:didReceiveResponse:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "Yes"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
-         filePath = "TopIOSSdk/TopIOSClient.m"
-         timestampString = "361957859.693128"
+         filePath = "MyTest/TopAppDelegate.m"
+         timestampString = "361936730.42351"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "112"
-         endingLineNumber = "112"
-         landmarkName = "-refreshToken"
+         startingLineNumber = "46"
+         endingLineNumber = "46"
+         landmarkName = "-connection:didReceiveData:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

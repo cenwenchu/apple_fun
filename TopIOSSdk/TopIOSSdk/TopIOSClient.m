@@ -8,23 +8,19 @@
 
 #import "TopIOSClient.h"
 #import "TopIOSUtil.h"
-#import "TopAuth.h"
+
 
 @interface TopIOSClient()
     @property(readonly) NSString *trackId;
-
-    @property(copy,atomic) NSString *appKey;
-    @property(copy,atomic) NSString *appSecret;
-    @property(copy,atomic) NSString *callbackUrl;
-    @property(copy,atomic) TopAuth *topAuth;
-
     @property(copy,atomic) NSString *authEntryUrl;
     @property(copy,atomic) NSString *apiEntryUrl;
+    @property(copy,atomic) NSString *authRefreshEntryUrl;
     @property(copy,atomic) NSString *sysName;
     @property(copy,atomic) NSString *sysVersion;
-
+    
     @property NSOperationQueue *queue;
     @property(strong,nonatomic)UIWebView *authView;
+    @property NSTimer *autoWorker;
 @end
 
 
@@ -37,30 +33,39 @@
 @synthesize topAuth = _topAuth;
 @synthesize authEntryUrl = _authEntryUrl;
 @synthesize apiEntryUrl = _apiEntryUrl;
+@synthesize authRefreshEntryUrl = _authRefreshEntryUrl;
 @synthesize trackId = _trackId;
+@synthesize needAutoRefreshToken = _needAutoRefreshToken;
 @synthesize queue;
 @synthesize authView;
 @synthesize sysName;
 @synthesize sysVersion;
+@synthesize autoWorker;
 
--(id)initIOSClient:(NSString *)appKey appSecret:(NSString *)appSecret callbackUrl:(NSString *)callbackUrl
+-(id)initIOSClient:(NSString *)appKey appSecret:(NSString *)appSecret callbackUrl:(NSString *)callbackUrl needAutoRefreshToken:(BOOL)needAutoRefreshToken
 {
     if(self = [super init])
     {
         [self setAuthEntryUrl:@"https://oauth.taobao.com/authorize"];
         [self setApiEntryUrl:@"http://gw.api.taobao.com/router/rest"];  
+        [self setAuthRefreshEntryUrl:@"https://oauth.taobao.com/token"];
         [self setAppKey:appKey];
         [self setAppSecret:appSecret];
         [self setCallbackUrl:callbackUrl];
+        [self setNeedAutoRefreshToken:needAutoRefreshToken];
         
         [self setSysName:[[UIDevice currentDevice] systemName]];
         [self setSysVersion:[[UIDevice currentDevice] systemVersion]];
+        
+        if(needAutoRefreshToken)
+            autoWorker = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshToken) userInfo:nil repeats:true];
         
         queue = [[NSOperationQueue alloc] init];
         authView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
         [authView setDelegate:self];
         [authView setScalesPageToFit:YES];
         [authView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
+        
     }
     
     return self;
@@ -71,16 +76,97 @@
     [self setAppKey:nil];
     [self setAppSecret:nil];
     [self setCallbackUrl:nil];
-    [self setTopAuth:nil];
     [self setAuthEntryUrl:nil];
     [self setApiEntryUrl:nil];
+    [self setAuthRefreshEntryUrl:nil];
     [self setQueue:nil];
     [self setAuthView:nil];
     [self setSysVersion:nil];
     [self setSysName:nil];
+    _topAuth = nil;
+    
+    if (_needAutoRefreshToken)
+    {
+        [autoWorker invalidate];
+        [self setAutoWorker:nil];
+    }
+
 }
 
--(void)auth:(UIViewController *) currentViewController;
+-(void)refreshToken
+{
+    if(_topAuth && [_topAuth refresh_interval] > 0)
+    {
+        NSDate *now = [NSDate date];
+        int i = ([[_topAuth refresh_interval] intValue] * 7/10);
+        
+        NSDate *checkDate = [[_topAuth beg_time] dateByAddingTimeInterval:i];
+        
+        if([checkDate earlierDate:now])
+        {
+            
+            NSMutableDictionary *reqParams = [[NSMutableDictionary alloc] init];
+            NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
+            
+            
+            [reqParams setObject:_appKey forKey:@"client_id"];
+            [reqParams setObject:_appSecret forKey:@"client_secret"];
+            [reqParams setObject:@"refresh_token" forKey:@"grant_type"];
+            [reqParams setObject:[_topAuth refresh_token] forKey:@"refresh_token"];
+            
+            NSLog(@" token : %@",[_topAuth refresh_token]);
+            
+            if (sysVersion)
+                [headers setObject:sysVersion forKey:@"client_sysVersion"];
+            
+            if (sysName)
+                [headers setObject:sysName forKey:@"client_sysName"];
+            
+            if (_trackId)
+                [headers setObject:_trackId forKey:@"track_id"];
+            
+            NSMutableString *body = [[NSMutableString alloc]init];
+            NSURL *url = [NSURL URLWithString:_authRefreshEntryUrl];
+            
+            NSEnumerator *enumerator = [reqParams keyEnumerator];
+            id key;
+            
+            while ((key = [enumerator nextObject])) {
+                [body appendString:key];        
+                [body appendString:@"=" ];
+                [body appendString:[[reqParams objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
+                [body appendString:@"&" ];
+            }
+            
+            NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url 
+                                              cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0f];
+                
+            NSData *d = [body dataUsingEncoding:NSUTF8StringEncoding];
+            [req setHTTPBody:d];
+            
+            
+            [req setHTTPMethod:@"POST"];
+            [req setAllHTTPHeaderFields:headers];
+            
+            NSOperationQueue *q = [[NSOperationQueue alloc] init];
+            
+            [NSURLConnection sendAsynchronousRequest:req queue:q completionHandler:^(NSURLResponse *resp,NSData *data,NSError *error){
+                
+                if (error == nil)
+                {
+                    NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+                }
+                else if (error != nil){
+                    NSLog(@"Error happened = %@", error); 
+                }
+            }];
+
+            
+        }
+    }
+}
+
+-(void)auth:(UIViewController *) currentViewController
 {
     
     NSMutableDictionary *params = [[NSMutableDictionary alloc] initWithObjectsAndKeys:_appKey,@"client_id",
@@ -103,12 +189,14 @@
     [self showAuthView];
 }
 
--(void)oauthCallback:(NSString *)authString;
+-(void)oauthCallback:(NSString *)authString
 {
     if(_topAuth)
-        [self setTopAuth:nil];
+        _topAuth =nil;
     
-    _topAuth = [[TopAuth alloc] initTopAuthFromString:authString];    
+    _topAuth = [[TopAuth alloc] initTopAuthFromString:authString];  
+    
+    NSLog(@" token : %@",[_topAuth refresh_token]);
     
     NSMutableString *s = [[NSMutableString alloc] initWithString:_appKey];
     [s appendString:@"-"];
@@ -120,7 +208,7 @@
     
 }
 
--(void)api:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb;
+-(void)api:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb
 {
     NSMutableDictionary *reqParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
@@ -133,10 +221,6 @@
     
     [reqParams setObject:@"2.0" forKey:@"v"];
     [reqParams setObject:@"md5" forKey:@"sign_method"];
-    
-    if (_trackId)
-        [reqParams setObject:_trackId forKey:@"track_id"];
-    
     
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -151,13 +235,15 @@
     if (sysName)
         [headers setObject:sysName forKey:@"client_sysName"];
     
+    if (_trackId)
+        [headers setObject:_trackId forKey:@"track_id"];
+
+    
     [TopIOSUtil sign:reqParams appSecret:_appSecret];
     
     
     NSMutableString *body = [[NSMutableString alloc]init];
     NSURL *url = [NSURL URLWithString:_apiEntryUrl];
-    NSMutableURLRequest *req = [NSMutableURLRequest requestWithURL:url 
-                                                       cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0f];
     
     NSEnumerator *enumerator = [reqParams keyEnumerator];
     id key;
@@ -165,16 +251,33 @@
     while ((key = [enumerator nextObject])) {
         [body appendString:key];        
         [body appendString:@"=" ];
-        [body appendString:[reqParams objectForKey:key]];
+        [body appendString:[[reqParams objectForKey:key] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding]];
         [body appendString:@"&" ];
     }
     
+    NSMutableURLRequest *req = nil;
     
-    NSData *d = [body dataUsingEncoding:NSUTF8StringEncoding];
+    if (![method caseInsensitiveCompare:@"Get"])
+    {
+        NSString *_url = [_apiEntryUrl stringByAppendingString:@"?"];
+        _url = [_url stringByAppendingString:body];
+        
+        NSLog(@"%@",_url);
+        
+        req = [NSMutableURLRequest requestWithURL:[NSURL URLWithString: _url] 
+                                       cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0f];
+        
+    }
+    else {
+        req = [NSMutableURLRequest requestWithURL:url 
+                                cachePolicy:NSURLRequestReloadIgnoringLocalAndRemoteCacheData timeoutInterval:10.0f];
+        
+        NSData *d = [body dataUsingEncoding:NSUTF8StringEncoding];
+        [req setHTTPBody:d];
+    }
     
-    [req setHTTPMethod:method];
+    [req setHTTPMethod:[method uppercaseString]];
     [req setAllHTTPHeaderFields:headers];
-    [req setHTTPBody:d];
     
     
     [NSURLConnection sendAsynchronousRequest:req queue:queue completionHandler:^(NSURLResponse *resp,NSData *data,NSError *error){

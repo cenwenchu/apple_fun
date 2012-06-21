@@ -21,8 +21,6 @@
 - (NSString *)MD5EncodedString;
 - (NSData *)HMACSHA1EncodedDataWithKey:(NSString *)key;
 - (NSString *)base64EncodedString;
-- (NSString *)URLEncodedString;
-- (NSString *)URLEncodedStringWithCFStringEncoding:(CFStringEncoding)encoding;
 @end
 
 @interface TopIOSUtil : NSObject

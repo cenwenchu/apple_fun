@@ -55,16 +55,6 @@
 	return [[self dataUsingEncoding:NSUTF8StringEncoding] base64EncodedString];
 }
 
-- (NSString *)URLEncodedString
-{
-	return [self URLEncodedStringWithCFStringEncoding:kCFStringEncodingUTF8];
-}
-
-- (NSString *)URLEncodedStringWithCFStringEncoding:(CFStringEncoding)encoding
-{
-	return (__bridge NSString *) CFURLCreateStringByAddingPercentEscapes(NULL, (__bridge CFStringRef)[self mutableCopy], NULL, CFSTR("￼=,!$&'()*+;@?\n\"<>#\t :/"), encoding);
-}
-
 @end
 
 @implementation TopIOSUtil
