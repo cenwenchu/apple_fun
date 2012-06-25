@@ -16,20 +16,23 @@
 @property(copy,nonatomic) NSString *access_token;
 @property(copy,nonatomic) NSString *refresh_token;
 @property(copy,nonatomic) NSString *mobile_token;
-@property(copy,nonatomic) NSNumber *token_expire_time;
-@property(copy,nonatomic) NSNumber *refresh_expire_time; 
-@property(copy,nonatomic) NSNumber *refresh_interval;
+@property int token_expire_time;
+@property int refresh_expire_time; 
+@property int refresh_interval;
 @property(copy,nonatomic) NSDate *beg_time; 
 
-@property(copy,nonatomic) NSNumber *token_expire_time_r1;
-@property(copy,nonatomic) NSNumber *token_expire_time_r2;
-@property(copy,nonatomic) NSNumber *token_expire_time_w1;
-@property(copy,nonatomic) NSNumber *token_expire_time_w2;
+@property int token_expire_time_r1;
+@property int token_expire_time_r2;
+@property int token_expire_time_w1;
+@property int token_expire_time_w2;
 
 @property(copy,nonatomic) NSString *user_name;
 @property(copy,nonatomic) NSString *user_id;
 
 //通过授权返回的字符串初始化授权对象
 -(id)initTopAuthFromString:(NSString*) authString;
+
+//更新授权内容
+-(void)refresh:(NSMutableDictionary *) params;
 
 @end

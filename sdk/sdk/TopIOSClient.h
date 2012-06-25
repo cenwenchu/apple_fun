@@ -4,6 +4,18 @@
 //
 //  IOS客户端，全局尽量使用一个即可，多个也不冲突，但是会消耗内存，本身支持并发，实现了IOSSdk的两个接口。
 //
+//
+//
+//  TopIOSClient iosClient = [[TopIOSClient alloc] initIOSClient:@"xxx" appSecret:@"xxx" callbackUrl:@"xxx" needAutoRefreshToken:TRUE];
+
+//  //授权方法调用，第一个参数就是当前view的viewController
+//  [iosClient auth:self];
+//
+//  //授权完成以后就可以直接调用服务了
+//  [iosClient api:false method:@"POST" params:params target:xxx cb:SEL];
+//
+//
+//
 //  Created by cenwenchu on 12-6-4.
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //

@@ -24,6 +24,7 @@
 /* Begin PBXFileReference section */
 		1865E87B15916AB5001B8CA9 /* TopAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAuth.h; sourceTree = "<group>"; };
 		1865E87C15916AB5001B8CA9 /* TopAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopAuth.m; sourceTree = "<group>"; };
+		18761593159821BE00B85B80 /* sdk-config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "sdk-config.plist"; sourceTree = "<group>"; };
 		18A0959A15907FA3007A9C68 /* libTopIOSSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTopIOSSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0959D15907FA3007A9C68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A095A115907FA3007A9C68 /* TopIOSSdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TopIOSSdk-Prefix.pch"; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 			isa = PBXGroup;
 			children = (
 				18A095A115907FA3007A9C68 /* TopIOSSdk-Prefix.pch */,
+				18761593159821BE00B85B80 /* sdk-config.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -211,6 +213,7 @@
 				ONLY_ACTIVE_ARCH = NO;
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
 			};
 			name = Debug;
 		};

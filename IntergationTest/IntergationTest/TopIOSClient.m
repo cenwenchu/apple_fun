@@ -78,15 +78,13 @@
 
 -(void)config
 {
-    NSString *path = [[NSBundle mainBundle] bundlePath];
-    NSString *finalPath = [path stringByAppendingPathComponent:@"sdk-config.plist"];
-    NSMutableDictionary * dict =  [NSMutableDictionary dictionaryWithContentsOfFile:finalPath];
+    NSMutableDictionary * dict =  [[NSMutableDictionary  alloc] initWithContentsOfFile :@"/sdk-config.plist"] ;
     
     if (dict)
     {
         NSString *pkg_version = [dict objectForKey:@"package_version"];
         NSString *pkg_uuid =  [dict objectForKey : @"package_uuid"];
-        
+    
         [self setPackageUUID:pkg_uuid];
         [self setPackageVersion:pkg_version];
     }
@@ -229,14 +227,8 @@
     }
 }
 
-
 -(void)loadAuth
 {
-    if (!_topAuth)
-    {
-        _topAuth = [[TopAuth alloc] init];
-    }
-    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
     if ([defaults valueForKey:@"access_token"])
@@ -257,7 +249,6 @@
     }
     
 }
-
 
 -(void)auth:(UIViewController *) currentViewController
 {
