@@ -30,8 +30,14 @@
     //存储授权的缓存
     @property(copy,atomic) NSMutableDictionary *authPool;
     @property Boolean isAuthPoolUpdate;
+
+
+-(id)initIOSClient:(NSString *)appKey appSecret:(NSString *)appSecret callbackUrl:(NSString *)callbackUrl needAutoRefreshToken:(BOOL)needAutoRefreshToken;
+
 @end
 
+
+static NSMutableDictionary *clientPools;
 
 @implementation TopIOSClient
 
@@ -59,6 +65,34 @@
 @synthesize sysVersion;
 @synthesize packageVersion;
 @synthesize packageUUID;
+
+
+//注册不同的appkey的ios客户端,需要提供appkey，appsecretcode，回调地址（保持和appkey注册的时候填入的回调地址一级域名一致），是否需要自动刷新access_token（在freshtoken有效期内）
++(id)registerIOSClient:(NSString *)appKey appSecret:(NSString *)appSecret callbackUrl:(NSString *)callbackUrl needAutoRefreshToken:(BOOL)needAutoRefreshToken
+{
+    if(!clientPools)
+    {
+        clientPools = [[NSMutableDictionary alloc] init];
+    }
+    
+    TopIOSClient *client = [[TopIOSClient alloc]initIOSClient:appKey appSecret:appSecret callbackUrl:callbackUrl needAutoRefreshToken:needAutoRefreshToken];
+    
+    [clientPools setObject:client forKey:appKey];
+    
+    return client;
+}
+
+//根据appkey获得客户端，如果没有注册将得到nil
++(TopIOSClient *)getIOSClientByAppKey:(NSString *)appKey
+{
+    if (clientPools)
+    {
+        return [clientPools objectForKey:appKey];
+    }
+    else {
+        return nil;
+    }
+}
 
 -(id)initIOSClient:(NSString *)appKey appSecret:(NSString *)appSecret callbackUrl:(NSString *)callbackUrl needAutoRefreshToken:(BOOL)needAutoRefreshToken
 {

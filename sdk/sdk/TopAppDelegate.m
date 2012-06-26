@@ -12,17 +12,10 @@
 @implementation TopAppDelegate
 
 @synthesize window = _window;
-@synthesize iosClient = _iosClient;
-
-+ (TopIOSClient*) getInnerClient{
-    TopAppDelegate *delegate = (TopAppDelegate *)[[UIApplication sharedApplication] delegate];
-    
-    return delegate.iosClient;
-}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _iosClient = [[TopIOSClient alloc] initIOSClient:@"12131533" appSecret:@"0172b897b59ecf8e69ba1a21f37c7e62" callbackUrl:nil needAutoRefreshToken:TRUE];
+    [TopIOSClient registerIOSClient:@"12131533" appSecret:@"0172b897b59ecf8e69ba1a21f37c7e62" callbackUrl:nil needAutoRefreshToken:TRUE];
     
     return YES;
 }
@@ -53,7 +46,7 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     
-    _iosClient = nil;
+   
 }
 
 @end

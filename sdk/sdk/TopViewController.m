@@ -34,12 +34,12 @@
 }
 
 - (IBAction)authAction:(id)sender {
-    TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
+    TopIOSClient *iosClient = [TopIOSClient getIOSClientByAppKey:@"12131533"];
     [iosClient auth:self cb:@selector(authCallback:)];
 }
 
 - (IBAction)tqlRequest:(id)sender {
-    TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
+    TopIOSClient *iosClient = [TopIOSClient getIOSClientByAppKey:@"12131533"];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
     NSString *uid = [userId text];
@@ -76,7 +76,7 @@
             [params setObject:[arr objectAtIndex:1] forKey:[arr objectAtIndex:0]];
         }
         
-        TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
+        TopIOSClient *iosClient =[TopIOSClient getIOSClientByAppKey:@"12131533"];
         [iosClient api:@"GET" params:params target:self cb:@selector(showApiResponse:) userId:uid];
         
     }

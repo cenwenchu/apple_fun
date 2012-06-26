@@ -12,8 +12,6 @@
 @interface TopAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) TopIOSClient *iosClient;
 
-+ (TopIOSClient *) getInnerClient;
 
 @end
