@@ -17,6 +17,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *authButton;
 @property (weak, nonatomic) IBOutlet UIButton *tqlButton;
 @property (weak, nonatomic) IBOutlet UITextView *responseContentView;
+@property (weak, nonatomic) IBOutlet UITextField *userId;
+
+@property (copy,nonatomic) NSMutableArray * userIds;
 
 - (IBAction)authAction:(id)sender;
 - (IBAction)tqlRequest:(id)sender;

@@ -131,6 +131,25 @@
     
 }
 
+-(NSString *)encodeTopAuthToString
+{
+    NSMutableString * authString = [[NSMutableString alloc]init];
+    
+    [authString appendFormat:@"access_token=%@",access_token];
+    [authString appendFormat:@"&refresh_token=%@",refresh_token];
+    [authString appendFormat:@"&re_expires_in=%i",refresh_expire_time];
+    [authString appendFormat:@"&expires_in=%i",token_expire_time];
+    [authString appendFormat:@"&r1_expires_in=%i",token_expire_time_r1];
+    [authString appendFormat:@"&r2_expires_in=%i",token_expire_time_r2];
+    [authString appendFormat:@"&w1_expires_in=%i",token_expire_time_w1];
+    [authString appendFormat:@"&w2_expires_in=%i",token_expire_time_w2];
+    [authString appendFormat:@"&taobao_user_id=%@",user_id];
+    [authString appendFormat:@"&taobao_user_nick=%@",user_name];
+    
+    
+    return authString;
+}
+
 -(void)refresh:(NSMutableDictionary *) params
 {
     NSArray *keys = [params allKeys];

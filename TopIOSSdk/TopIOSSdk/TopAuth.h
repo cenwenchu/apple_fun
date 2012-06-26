@@ -35,4 +35,7 @@
 //更新授权内容
 -(void)refresh:(NSMutableDictionary *) params;
 
+//将TopAuth对象序列化为字符串
+-(NSString *)encodeTopAuthToString;
+
 @end

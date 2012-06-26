@@ -51,7 +51,7 @@
                                         </connections>
                                     </button>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" id="ILi-ED-FtG">
-                                        <rect key="frame" x="0.0" y="127" width="320" height="333"/>
+                                        <rect key="frame" x="0.0" y="217" width="320" height="243"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -73,7 +73,7 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="tBo-3v-ljT">
-                                        <rect key="frame" x="119" y="76" width="72" height="37"/>
+                                        <rect key="frame" x="228" y="153" width="72" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                         <state key="normal" title="TQL">
@@ -87,6 +87,19 @@
                                             <action selector="tqlRequest:" destination="2" eventType="touchUpInside" id="320-mj-92E"/>
                                         </connections>
                                     </button>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="r1c-LV-Bbi">
+                                        <rect key="frame" x="20" y="159" width="166" height="31"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="user_id:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="kmk-n3-IgS">
+                                        <rect key="frame" x="28" y="130" width="61" height="21"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                             </scrollView>
                         </subviews>
@@ -99,12 +112,28 @@
                         <outlet property="reqTextField" destination="ifF-TB-eCc" id="pY5-d8-tHK"/>
                         <outlet property="responseContentView" destination="ILi-ED-FtG" id="wVe-gb-Xnk"/>
                         <outlet property="tqlButton" destination="tBo-3v-ljT" id="g5Q-Ml-UC5"/>
+                        <outlet property="userId" destination="r1c-LV-Bbi" id="pen-zl-0U0"/>
                     </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="-70" y="-198"/>
         </scene>
     </scenes>
+    <classes>
+        <class className="TopViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TopViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="authAction:"/>
+                <relationship kind="action" name="tqlRequest:"/>
+                <relationship kind="outlet" name="authButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="reqButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="reqTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="responseContentView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="tqlButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="userId" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

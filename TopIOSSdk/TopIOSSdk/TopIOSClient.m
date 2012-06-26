@@ -23,8 +23,13 @@
     @property(copy,atomic) NSString *packageUUID;
 
     @property NSOperationQueue *queue;
+    //授权展示页面
     @property(strong,nonatomic)TopAuthView *topAuthView;
-    @property NSTimer *autoWorker;
+    //后台自动刷新授权，当前为单线程处理所有的授权，如果授权数量很多会不太适合
+    @property NSTimer *autoRefreshTokenWorker;
+    //存储授权的缓存
+    @property(copy,atomic) NSMutableDictionary *authPool;
+    @property Boolean isAuthPoolUpdate;
 @end
 
 
@@ -34,7 +39,7 @@
 @synthesize appKey = _appKey;
 @synthesize appSecret = _appSecret;
 @synthesize callbackUrl = _callbackUrl;
-@synthesize topAuth = _topAuth;
+@synthesize authPool;
 @synthesize needAutoRefreshToken = _needAutoRefreshToken;
 
 //sys config
@@ -46,7 +51,8 @@
 //sys component
 @synthesize queue;
 @synthesize topAuthView;
-@synthesize autoWorker;
+@synthesize autoRefreshTokenWorker;
+@synthesize isAuthPoolUpdate;
 
 //client config
 @synthesize sysName;
@@ -71,9 +77,11 @@
         [self setSysVersion:[[UIDevice currentDevice] systemVersion]];
         
         if(needAutoRefreshToken)
-            autoWorker = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshToken) userInfo:nil repeats:true];
+            autoRefreshTokenWorker = [NSTimer scheduledTimerWithTimeInterval:60 target:self selector:@selector(refreshAllToken) userInfo:nil repeats:true];
         
         queue = [[NSOperationQueue alloc] init];
+        authPool = [[NSMutableDictionary alloc]init];
+        isAuthPoolUpdate = false;
         
         UIWebView *_authView = [[UIWebView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
         [_authView setDelegate:self];
@@ -83,7 +91,7 @@
         [self setTopAuthView:[[TopAuthView alloc]initWithView:_authView]];
         
         [self config];
-        [self loadAuth];
+        [self loadAuthPools];
         
     }
     
@@ -97,57 +105,72 @@
     [self setPackageVersion:@"top_ios_version_2012_0.1"];
 }
 
--(void)storeAuth
+-(void)storeAuthPools 
 {
-    if(_topAuth)
+    if([authPool count] > 0)
     {
         NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
         
-        [defaults setObject:[_topAuth access_token] forKey:@"access_token"];
-        [defaults setObject:[_topAuth refresh_token] forKey:@"refresh_token"];
-        [defaults setObject:[_topAuth mobile_token] forKey:@"mobile_token"];
-        [defaults setObject:[NSNumber numberWithInt:[_topAuth token_expire_time]] forKey:@"token_expire_time"];
-        [defaults setObject:[NSNumber numberWithInt:[_topAuth refresh_expire_time]] forKey:@"refresh_expire_time"];
-        [defaults setObject:[NSNumber numberWithInt:[_topAuth refresh_interval]] forKey:@"refresh_interval"];
-        [defaults setObject:[_topAuth beg_time] forKey:@"beg_time"];
-        [defaults setObject:[NSNumber numberWithInt:[_topAuth token_expire_time_r1]] forKey:@"token_expire_time_r1"];
-        [defaults setObject:[NSNumber numberWithInt:[_topAuth token_expire_time_r2]] forKey:@"token_expire_time_r2"];
-        [defaults setObject:[NSNumber numberWithInt:[_topAuth token_expire_time_w1]] forKey:@"token_expire_time_w1"];
-        [defaults setObject:[NSNumber numberWithInt:[_topAuth token_expire_time_w2]] forKey:@"token_expire_time_w2"];
+        if ([defaults objectForKey:@"authPools"])
+            [defaults removeObjectForKey:@"authPools"];
         
-        [defaults setObject:[_topAuth user_name] forKey:@"user_name"];
-        [defaults setObject:[_topAuth user_id] forKey:@"user_id"];
+        NSMutableDictionary *as = [[NSMutableDictionary alloc]init];
+        
+        for(NSString *k in [authPool allKeys])
+        {
+            [as setObject:[[authPool objectForKey:k] encodeTopAuthToString] forKey:k];
+        }
+        
+        [defaults setObject:as forKey:@"authPools"];
+        
     }
 }
 
 
--(void)loadAuth
+-(void)loadAuthPools
 {
     
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     
-    if ([defaults valueForKey:@"access_token"])
+       
+    if ([defaults objectForKey:@"authPools"])
     {
-        if (!_topAuth)
-        {
-            _topAuth = [[TopAuth alloc] init];
-        }
+        [authPool removeAllObjects];
         
-        [_topAuth setAccess_token:[defaults valueForKey:@"access_token"]];
-        [_topAuth setRefresh_token:[defaults valueForKey:@"refresh_token"]];
-        [_topAuth setMobile_token:[defaults valueForKey:@"mobile_token"]];
-        [_topAuth setBeg_time:[defaults valueForKey:@"beg_time"]];
-        [_topAuth setUser_name:[defaults valueForKey:@"user_name"]];
-        [_topAuth setUser_id:[defaults valueForKey:@"user_id"]];
-        [_topAuth setToken_expire_time:[(NSNumber *)[defaults valueForKey:@"token_expire_time"] intValue]];
-        [_topAuth setRefresh_expire_time:[(NSNumber *)[defaults valueForKey:@"refresh_expire_time"] intValue]];
-        [_topAuth setRefresh_interval:[(NSNumber *)[defaults valueForKey:@"refresh_interval"] intValue]];
-        [_topAuth setToken_expire_time_r1:[(NSNumber *)[defaults valueForKey:@"token_expire_time_r1"] intValue]];
-        [_topAuth setToken_expire_time_r2:[(NSNumber *)[defaults valueForKey:@"token_expire_time_r2"] intValue]];
-        [_topAuth setToken_expire_time_w1:[(NSNumber *)[defaults valueForKey:@"token_expire_time_w1"] intValue]];
-        [_topAuth setToken_expire_time_w2:[(NSNumber *)[defaults valueForKey:@"token_expire_time_w2"] intValue]];
+        
+        NSMutableDictionary *ar = [defaults objectForKey:@"authPools"];
+        
+        for(NSString * t in [ar allValues])
+        {
+            TopAuth *auth = [[TopAuth alloc]initTopAuthFromString:t]; 
+            [authPool setObject:auth forKey:[auth user_id]]; 
+        }
     }
     
+}
+
+-(NSArray *)getAllAuthUserIds
+{
+    if(authPool && [authPool count] > 0)
+    {
+        return [authPool allKeys];
+    }
+    else {
+        return nil;
+    }
+}
+
+-(TopAuth *)getAuthByUserId:(NSString *)user_id
+{
+    return [authPool objectForKey:user_id];
+}
+
+-(void)setAuthByUserId:(NSString *)user_id auth:(TopAuth *)auth
+{
+    if (auth)
+    {
+        [authPool setObject:authPool forKey:user_id];
+    }
 }
 
 -(void)dealloc
@@ -166,29 +189,48 @@
     [self setPackageVersion:nil];
     [self setPackageUUID:nil];
     [self setTqlEntryUrl:nil];
-    _topAuth = nil;
+    authPool = nil;
     
     if (_needAutoRefreshToken)
     {
-        [autoWorker invalidate];
-        [self setAutoWorker:nil];
+        [autoRefreshTokenWorker invalidate];
+        [self setAutoRefreshTokenWorker:nil];
     }
 
 }
 
--(void)refreshToken
+-(void)refreshAllToken
 {
-    if(_topAuth && [_topAuth refresh_interval] > 0)
+    NSArray *tokens = [authPool allValues];
+    
+    for(TopAuth *t in tokens)
+    {
+        [self refreshToken:t];
+    }
+    
+}
+
+-(void)refreshTokenByUserId:(NSString *)userId
+{
+    if([authPool objectForKey:userId])
+    {
+        [self refreshToken:[authPool objectForKey:userId]];
+    }
+}
+
+-(void)refreshToken:(TopAuth *)topAuth
+{
+    if(topAuth && [topAuth refresh_interval] > 0)
     {
         NSDate *now = [NSDate date];
-        int i = ([_topAuth refresh_interval] * 7/10);
+        int i = ([topAuth refresh_interval] * 7/10);
         
-        NSDate *checkDate = [[_topAuth beg_time] dateByAddingTimeInterval:i];
+        NSDate *checkDate = [[topAuth beg_time] dateByAddingTimeInterval:i];
         
         if([checkDate compare:now] == NSOrderedAscending)
         {
             
-            [_topAuth setBeg_time:now];
+            [topAuth setBeg_time:now];
             
             NSMutableDictionary *reqParams = [[NSMutableDictionary alloc] init];
             NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
@@ -197,9 +239,9 @@
             [reqParams setObject:_appKey forKey:@"client_id"];
             [reqParams setObject:_appSecret forKey:@"client_secret"];
             [reqParams setObject:@"refresh_token" forKey:@"grant_type"];
-            [reqParams setObject:[_topAuth refresh_token] forKey:@"refresh_token"];
+            [reqParams setObject:[topAuth refresh_token] forKey:@"refresh_token"];
             
-            NSLog(@" token : %@",[_topAuth refresh_token]);
+            NSLog(@" token userId: %@",[topAuth user_id]);
             
             if (sysVersion)
                 [headers setObject:sysVersion forKey:@"client_sysVersion"];
@@ -213,9 +255,9 @@
             [headers setObject:timestamp forKey:@"timestamp"];
             
             NSString * track_id = nil;
-            if (_topAuth)
+            if (topAuth)
             {
-                track_id = [self makeTrackId:[_topAuth user_id] timestamp:timestamp];
+                track_id = [self makeTrackId:[topAuth user_id] timestamp:timestamp];
             }
             [headers setObject:track_id forKey:@"track_id"];
             [headers setObject:packageVersion forKey:@"packageVersion"];
@@ -254,8 +296,16 @@
                     
                     id jsonObjects = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
                     
-                    [_topAuth refresh:jsonObjects];
-                    [self storeAuth];
+                    NSString *uid = [jsonObjects objectForKey:@"taobao_user_id"];
+                    
+                    TopAuth *ta = [authPool objectForKey:uid];
+                    
+                    if (ta)
+                    {
+                        [ta refresh:jsonObjects];
+                        isAuthPoolUpdate = true;
+                        [self storeAuthPools];
+                    }
                     
                 }
                 else if (error != nil){
@@ -294,15 +344,25 @@
     [self showAuthView];
 }
 
--(void)oauthCallback:(NSString *)authString
+-(TopAuth *)oauthCallback:(NSString *)authString
 {
-    if(_topAuth)
-        _topAuth =nil;
     
-    _topAuth = [[TopAuth alloc] initTopAuthFromString:authString];  
+    TopAuth *topAuth = [[TopAuth alloc] initTopAuthFromString:authString];  
     
-    [self storeAuth];
+    NSString *uid = [topAuth user_id];
     
+    if([authPool objectForKey:uid])
+    {
+        [authPool removeObjectForKey:uid];
+    }
+    
+    [authPool setObject:topAuth forKey:uid];
+    
+    isAuthPoolUpdate = true;
+    
+    [self storeAuthPools];
+    
+    return topAuth;
 }
 
 -(NSString *)makeTrackId:(NSString *)user_id timestamp:(NSString *)timestamp
@@ -328,23 +388,23 @@
     return trackId;
 }
 
--(void)api:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb
+-(void)api:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb userId:(NSString *)userId
 {
-    [self call:_apiEntryUrl isHttps:isHttps method:method params:params target:target cb:cb];
+    [self call:_apiEntryUrl method:method params:params target:target cb:cb userId:userId];
 }
 
--(void)tql:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb
+-(void)tql:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb userId:(NSString *)userId
 {
-    [self call:_tqlEntryUrl isHttps:isHttps method:method params:params target:target cb:cb];
+    [self call:_tqlEntryUrl method:method params:params target:target cb:cb userId:userId];
 }
 
--(void)call:(NSString *)url isHttps:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb
+-(void)call:(NSString *)url method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb userId:(NSString *)userId
 {
     NSMutableDictionary *reqParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *files = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
     
-    Boolean isMultipart = [self prepareRequest:params reqParams:reqParams files:files headers:headers];
+    Boolean isMultipart = [self prepareRequest:params reqParams:reqParams files:files headers:headers userId:userId];
     
     
     NSMutableString *body = [[NSMutableString alloc]init];
@@ -403,7 +463,7 @@
     }];
 }
 
--(Boolean)prepareRequest:(NSDictionary *)params reqParams:(NSMutableDictionary *)reqParams files:(NSMutableDictionary *)files headers:(NSMutableDictionary *) headers
+-(Boolean)prepareRequest:(NSDictionary *)params reqParams:(NSMutableDictionary *)reqParams files:(NSMutableDictionary *)files headers:(NSMutableDictionary *) headers userId:(NSString *)userId
 {
     Boolean isMultipart = false;
     
@@ -437,8 +497,8 @@
     NSString *timestamp = [dateFormatter stringFromDate:[NSDate date]];
     [reqParams setObject:timestamp forKey:@"timestamp"];
     
-    if (_topAuth)
-        [reqParams setObject:[_topAuth access_token]  forKey:@"session"];
+    if (userId && [authPool objectForKey:userId])
+        [reqParams setObject:[[authPool objectForKey:userId] access_token]  forKey:@"session"];
     
     if (sysVersion)
         [headers setObject:sysVersion forKey:@"client_sysVersion"];
@@ -448,9 +508,9 @@
     
     NSString * track_id = nil;
     
-    if (_topAuth)
+    if (userId && [authPool objectForKey:userId])
     {
-        track_id = [self makeTrackId:[_topAuth user_id] timestamp:timestamp];
+        track_id = [self makeTrackId:userId timestamp:timestamp];
     }
     else {
         track_id = [self makeTrackId:nil timestamp:timestamp];
@@ -487,10 +547,10 @@
         else {
             NSLog(@"%@",(NSString *)anObject);
             
-            [self oauthCallback:(NSString *)anObject];
+            TopAuth* ta = [self oauthCallback:(NSString *)anObject];
             [self hideAuthView];
             
-            [[topAuthView target] performSelectorOnMainThread:[topAuthView callback] withObject:_topAuth waitUntilDone:FALSE];
+            [[topAuthView target] performSelectorOnMainThread:[topAuthView callback] withObject:ta waitUntilDone:FALSE];
             
             break;
         }

@@ -20,6 +20,8 @@
 @synthesize authButton;
 @synthesize tqlButton;
 @synthesize responseContentView;
+@synthesize userId;
+@synthesize userIds;
 
 
 
@@ -40,9 +42,11 @@
     TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
     NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
     
+    NSString *uid = [userId text];
+    
     [params setValue:@"select uid,nick,sex,location from user where nick=cenwenchu" forKey:@"ql"];
     
-    [iosClient tql:false method:@"GET" params:params target:self cb:@selector(showApiResponse:)];
+    [iosClient tql:@"GET" params:params target:self cb:@selector(showApiResponse:) userId:uid];
 }
 
 - (IBAction)sendRequestAction:(id)sender {
@@ -50,6 +54,7 @@
     [responseContentView setText:nil];
     
     NSString *requestStr = reqTextField.text;
+    NSString *uid = [userId text];
     
     if (requestStr && [requestStr length] > 0)
     {
@@ -72,7 +77,7 @@
         }
         
         TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
-        [iosClient api:false method:@"GET" params:params target:self cb:@selector(showApiResponse:)];
+        [iosClient api:@"GET" params:params target:self cb:@selector(showApiResponse:) userId:uid];
         
     }
     else {
@@ -87,7 +92,11 @@
     
     TopAuth *auth = (TopAuth *)data;
     
-    NSLog(@"%@",[auth access_token]);
+    [userIds addObject:[auth user_id]];
+    
+    NSLog(@"%@",[auth user_id]);
+    
+    [userId setText:[auth user_id]];
     
 }
 
@@ -119,6 +128,7 @@
 {
     [super viewDidLoad];
     
+    userIds = [[NSMutableArray alloc]init];
 }
 
 - (void)viewDidUnload
@@ -129,6 +139,7 @@
     [self setAuthButton:nil];
     
     [self setTqlButton:nil];
+    [self setUserId:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
