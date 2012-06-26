@@ -17,13 +17,17 @@
 		188D948D157CA72600DA8AA2 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188D948B157CA72600DA8AA2 /* MainStoryboard_iPhone.storyboard */; };
 		188D9490157CA72600DA8AA2 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 188D948E157CA72600DA8AA2 /* MainStoryboard_iPad.storyboard */; };
 		188D9493157CA72600DA8AA2 /* TopViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 188D9492157CA72600DA8AA2 /* TopViewController.m */; };
-		18B136B9159310C6003798C5 /* libTopIOSSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18B136B8159310C6003798C5 /* libTopIOSSdk.a */; };
 		18CBBD491589916E00D21AE5 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBBD481589916E00D21AE5 /* CoreLocation.framework */; };
 		18CBBD4C1589917500D21AE5 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18CBBD4B1589917500D21AE5 /* MapKit.framework */; };
+		18E6A047159887DE003ACA08 /* TopIOSClient.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E6A046159887DE003ACA08 /* TopIOSClient.m */; };
+		18E6A04C159888F0003ACA08 /* libTopIOSSdk.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 18E6A04B159888F0003ACA08 /* libTopIOSSdk.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1807EF1D1587A27800B9F777 /* tt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tt.png; sourceTree = "<group>"; };
+		1813C2C71598BF680095CECA /* TopAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopAuth.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopAuth.h"; sourceTree = "<group>"; };
+		1813C2C81598BF680095CECA /* TopIOSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopIOSClient.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSClient.h"; sourceTree = "<group>"; };
+		1813C2C91598BF680095CECA /* TopIOSSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopIOSSdk.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSSdk.h"; sourceTree = "<group>"; };
 		188D9475157CA72600DA8AA2 /* sdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sdk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188D9479157CA72600DA8AA2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		188D947B157CA72600DA8AA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -38,12 +42,10 @@
 		188D948F157CA72600DA8AA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		188D9491157CA72600DA8AA2 /* TopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
 		188D9492157CA72600DA8AA2 /* TopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
-		18B136B5159310A7003798C5 /* TopAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAuth.h; sourceTree = "<group>"; };
-		18B136B6159310B1003798C5 /* TopIOSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopIOSClient.h; sourceTree = "<group>"; };
-		18B136B7159310BC003798C5 /* TopIOSSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopIOSSdk.h; sourceTree = "<group>"; };
-		18B136B8159310C6003798C5 /* libTopIOSSdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libTopIOSSdk.a; sourceTree = "<group>"; };
 		18CBBD481589916E00D21AE5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18CBBD4B1589917500D21AE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		18E6A046159887DE003ACA08 /* TopIOSClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TopIOSClient.m; path = ../TopIOSSdk/TopIOSSdk/TopIOSClient.m; sourceTree = "<group>"; };
+		18E6A04B159888F0003ACA08 /* libTopIOSSdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTopIOSSdk.a; path = "../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/libTopIOSSdk.a"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,7 +58,7 @@
 				188D947A157CA72600DA8AA2 /* UIKit.framework in Frameworks */,
 				188D947C157CA72600DA8AA2 /* Foundation.framework in Frameworks */,
 				188D947E157CA72600DA8AA2 /* CoreGraphics.framework in Frameworks */,
-				18B136B9159310C6003798C5 /* libTopIOSSdk.a in Frameworks */,
+				18E6A04C159888F0003ACA08 /* libTopIOSSdk.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,6 +68,7 @@
 		188D946A157CA72600DA8AA2 = {
 			isa = PBXGroup;
 			children = (
+				18E6A046159887DE003ACA08 /* TopIOSClient.m */,
 				1807EF1D1587A27800B9F777 /* tt.png */,
 				188D947F157CA72600DA8AA2 /* sdk */,
 				188D9478157CA72600DA8AA2 /* Frameworks */,
@@ -84,6 +87,7 @@
 		188D9478157CA72600DA8AA2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				18E6A04B159888F0003ACA08 /* libTopIOSSdk.a */,
 				18CBBD4B1589917500D21AE5 /* MapKit.framework */,
 				18CBBD481589916E00D21AE5 /* CoreLocation.framework */,
 				188D9479157CA72600DA8AA2 /* UIKit.framework */,
@@ -96,9 +100,9 @@
 		188D947F157CA72600DA8AA2 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				18B136B7159310BC003798C5 /* TopIOSSdk.h */,
-				18B136B6159310B1003798C5 /* TopIOSClient.h */,
-				18B136B5159310A7003798C5 /* TopAuth.h */,
+				1813C2C71598BF680095CECA /* TopAuth.h */,
+				1813C2C81598BF680095CECA /* TopIOSClient.h */,
+				1813C2C91598BF680095CECA /* TopIOSSdk.h */,
 				188D9488157CA72600DA8AA2 /* TopAppDelegate.h */,
 				188D9489157CA72600DA8AA2 /* TopAppDelegate.m */,
 				188D948B157CA72600DA8AA2 /* MainStoryboard_iPhone.storyboard */,
@@ -113,7 +117,6 @@
 		188D9480157CA72600DA8AA2 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				18B136B8159310C6003798C5 /* libTopIOSSdk.a */,
 				188D9481157CA72600DA8AA2 /* sdk-Info.plist */,
 				188D9482157CA72600DA8AA2 /* InfoPlist.strings */,
 				188D9485157CA72600DA8AA2 /* main.m */,
@@ -187,6 +190,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18E6A047159887DE003ACA08 /* TopIOSClient.m in Sources */,
 				188D9486157CA72600DA8AA2 /* main.m in Sources */,
 				188D948A157CA72600DA8AA2 /* TopAppDelegate.m in Sources */,
 				188D9493157CA72600DA8AA2 /* TopViewController.m in Sources */,
@@ -287,6 +291,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/sdk\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -310,6 +315,7 @@
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
 					"\"$(SRCROOT)/sdk\"",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";

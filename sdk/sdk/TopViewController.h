@@ -15,8 +15,10 @@
 @property (weak, nonatomic) IBOutlet UITextField *reqTextField;
 @property (weak, nonatomic) IBOutlet UIButton *reqButton;
 @property (weak, nonatomic) IBOutlet UIButton *authButton;
+@property (weak, nonatomic) IBOutlet UIButton *tqlButton;
 @property (weak, nonatomic) IBOutlet UITextView *responseContentView;
 
 - (IBAction)authAction:(id)sender;
+- (IBAction)tqlRequest:(id)sender;
 
 @end

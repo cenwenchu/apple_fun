@@ -18,6 +18,7 @@
 @synthesize reqTextField;
 @synthesize reqButton;
 @synthesize authButton;
+@synthesize tqlButton;
 @synthesize responseContentView;
 
 
@@ -32,7 +33,16 @@
 
 - (IBAction)authAction:(id)sender {
     TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
-    [iosClient auth:self];
+    [iosClient auth:self cb:@selector(authCallback:)];
+}
+
+- (IBAction)tqlRequest:(id)sender {
+    TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
+    NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+    
+    [params setValue:@"select uid,nick,sex,location from user where nick=cenwenchu" forKey:@"ql"];
+    
+    [iosClient tql:false method:@"GET" params:params target:self cb:@selector(showApiResponse:)];
 }
 
 - (IBAction)sendRequestAction:(id)sender {
@@ -62,13 +72,22 @@
         }
         
         TopIOSClient *iosClient = [TopAppDelegate getInnerClient];
-        [iosClient api:false method:@"POST" params:params target:self cb:@selector(showApiResponse:)];
+        [iosClient api:false method:@"GET" params:params target:self cb:@selector(showApiResponse:)];
         
     }
     else {
         
         [self message:@"必须填入请求地址."];    
     }
+    
+}
+
+-(void) authCallback:(id)data
+{
+    
+    TopAuth *auth = (TopAuth *)data;
+    
+    NSLog(@"%@",[auth access_token]);
     
 }
 
@@ -109,6 +128,7 @@
     [self setResponseContentView:nil];
     [self setAuthButton:nil];
     
+    [self setTqlButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
