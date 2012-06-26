@@ -14,10 +14,16 @@
 @protocol TopIOSSdk <NSObject>
 
 //授权接口，直接封装了授权的页面和授权返回解析保存
--(void)auth:(UIViewController *) currentViewController;
+-(void)auth:(id)target cb:(SEL)cb;
 
+//刷新授权access_token
+-(void)refreshToken;
 
 //调用api: isHttps是否采用https的方式请求api; method请求的方法(GET,POST);params具体的业务和系统参数;target和cb用于请求后传递结果回调（NSString或者NSError两种返回）
 -(void)api:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb;
+
+//调用tql的入口，参数如上描述
+-(void)tql:(BOOL)isHttps method:(NSString *)method params:(NSDictionary *)params target:(id)target cb:(SEL)cb;
+
 
 @end

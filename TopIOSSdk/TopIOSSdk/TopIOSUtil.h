@@ -28,5 +28,6 @@
 + (NSString *)serializeURL:(NSString *)baseURL params:(NSDictionary *)params httpMethod:(NSString *)httpMethod;
 + (NSString *)stringFromDictionary:(NSDictionary *)dict;
 +(void) sign:(NSMutableDictionary *)params appSecret:(NSString *)appSecret;
++(void)setMultipartPostBody:(NSMutableURLRequest *)req reqParams:(NSMutableDictionary *)reqParams attachs:(NSMutableDictionary *)attachs;
 
 @end
