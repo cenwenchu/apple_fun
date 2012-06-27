@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1807EF1E1587A27800B9F777 /* tt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1807EF1D1587A27800B9F777 /* tt.png */; };
+		1875F63D1599FA6B002D51FE /* TopIOSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1875F63C1599FA6B002D51FE /* TopIOSUtil.m */; };
+		1875F63F1599FD84002D51FE /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1875F63E1599FD84002D51FE /* GTMBase64.m */; };
 		188D947A157CA72600DA8AA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188D9479157CA72600DA8AA2 /* UIKit.framework */; };
 		188D947C157CA72600DA8AA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188D947B157CA72600DA8AA2 /* Foundation.framework */; };
 		188D947E157CA72600DA8AA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188D947D157CA72600DA8AA2 /* CoreGraphics.framework */; };
@@ -28,6 +30,9 @@
 		1813C2C71598BF680095CECA /* TopAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopAuth.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopAuth.h"; sourceTree = "<group>"; };
 		1813C2C81598BF680095CECA /* TopIOSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopIOSClient.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSClient.h"; sourceTree = "<group>"; };
 		1813C2C91598BF680095CECA /* TopIOSSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopIOSSdk.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSSdk.h"; sourceTree = "<group>"; };
+		1875F63C1599FA6B002D51FE /* TopIOSUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TopIOSUtil.m; path = ../TopIOSSdk/TopIOSSdk/TopIOSUtil.m; sourceTree = "<group>"; };
+		1875F63E1599FD84002D51FE /* GTMBase64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GTMBase64.m; path = ../TopIOSSdk/TopIOSSdk/encoding/GTMBase64.m; sourceTree = "<group>"; };
+		1875F6401599FD9F002D51FE /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMBase64.h; path = ../TopIOSSdk/TopIOSSdk/encoding/GTMBase64.h; sourceTree = "<group>"; };
 		188D9475157CA72600DA8AA2 /* sdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sdk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188D9479157CA72600DA8AA2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		188D947B157CA72600DA8AA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -42,6 +47,7 @@
 		188D948F157CA72600DA8AA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		188D9491157CA72600DA8AA2 /* TopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
 		188D9492157CA72600DA8AA2 /* TopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
+		18A2793F159AC986002A8C49 /* Attachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Attachment.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphoneos/Attachment.h"; sourceTree = "<group>"; };
 		18CBBD481589916E00D21AE5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18CBBD4B1589917500D21AE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		18E6A046159887DE003ACA08 /* TopIOSClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TopIOSClient.m; path = ../TopIOSSdk/TopIOSSdk/TopIOSClient.m; sourceTree = "<group>"; };
@@ -68,6 +74,9 @@
 		188D946A157CA72600DA8AA2 = {
 			isa = PBXGroup;
 			children = (
+				1875F6401599FD9F002D51FE /* GTMBase64.h */,
+				1875F63E1599FD84002D51FE /* GTMBase64.m */,
+				1875F63C1599FA6B002D51FE /* TopIOSUtil.m */,
 				18E6A046159887DE003ACA08 /* TopIOSClient.m */,
 				1807EF1D1587A27800B9F777 /* tt.png */,
 				188D947F157CA72600DA8AA2 /* sdk */,
@@ -100,6 +109,7 @@
 		188D947F157CA72600DA8AA2 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
+				18A2793F159AC986002A8C49 /* Attachment.h */,
 				1813C2C71598BF680095CECA /* TopAuth.h */,
 				1813C2C81598BF680095CECA /* TopIOSClient.h */,
 				1813C2C91598BF680095CECA /* TopIOSSdk.h */,
@@ -190,6 +200,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1875F63F1599FD84002D51FE /* GTMBase64.m in Sources */,
+				1875F63D1599FA6B002D51FE /* TopIOSUtil.m in Sources */,
 				18E6A047159887DE003ACA08 /* TopIOSClient.m in Sources */,
 				188D9486157CA72600DA8AA2 /* main.m in Sources */,
 				188D948A157CA72600DA8AA2 /* TopAppDelegate.m in Sources */,

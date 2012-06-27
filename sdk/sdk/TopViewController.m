@@ -21,6 +21,7 @@
 @synthesize tqlButton;
 @synthesize responseContentView;
 @synthesize userId;
+@synthesize uploadPicButton;
 @synthesize userIds;
 
 
@@ -35,6 +36,7 @@
 
 - (IBAction)authAction:(id)sender {
     TopIOSClient *iosClient = [TopIOSClient getIOSClientByAppKey:@"12131533"];
+    //TopIOSClient *iosClient = [TopIOSClient getIOSClientByAppKey:@"470437"];
     [iosClient auth:self cb:@selector(authCallback:)];
 }
 
@@ -44,9 +46,39 @@
     
     NSString *uid = [userId text];
     
-    [params setValue:@"select uid,nick,sex,location from user where nick=cenwenchu" forKey:@"ql"];
+    [params setValue:@"select num_iid,title,type,location from item where num_iid=17795332215" forKey:@"ql"];
     
     [iosClient tql:@"GET" params:params target:self cb:@selector(showApiResponse:) userId:uid];
+}
+
+- (IBAction)uploadPicAction:(id)sender {
+    
+    NSString *uid = [userId text];
+    //NSString *uid = @"2026680875";
+    
+    NSMutableDictionary *params = [[NSMutableDictionary alloc]init];
+    
+    [params setObject:@"taobao.item.img.upload" forKey:@"method"];
+    [params setObject:@"17795332215" forKey:@"num_iid"];
+    
+   
+    NSURL *url = [[NSURL alloc] initWithString:@"http://img01.taobaocdn.com/bao/uploaded/i1/T1X4TeXb0jXXX39Ro3_051047.jpg_310x310.jpg"];
+    NSData *image_data = [NSData dataWithContentsOfURL:url];
+    
+    Attachment *image = [[Attachment alloc]init];
+    [image setData:image_data];
+    [image setName:@"mypic.jpg"];
+    
+    
+    [params setObject:image forKey:@"image"];
+    //[params setObject:@"6101f2833fb2742ac2557f49ee6a23a4b4811641cb50b802026680875" forKey:@"session"];
+    
+    TopIOSClient *iosClient =[TopIOSClient getIOSClientByAppKey:@"12131533"];
+    //TopIOSClient *iosClient = [TopIOSClient getIOSClientByAppKey:@"470437"];
+    
+    
+    [iosClient api:@"POST" params:params target:self cb:@selector(showApiResponse:) userId:uid];
+    
 }
 
 - (IBAction)sendRequestAction:(id)sender {
@@ -140,6 +172,7 @@
     
     [self setTqlButton:nil];
     [self setUserId:nil];
+    [self setUploadPicButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

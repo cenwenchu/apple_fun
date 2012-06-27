@@ -99,7 +99,9 @@ static NSMutableDictionary *clientPools;
     if(self = [super init])
     {
         [self setAuthEntryUrl:@"https://oauth.taobao.com/authorize"];
+        //[self setAuthEntryUrl:@"https://oauth.daily.taobao.net/authorize"];
         [self setApiEntryUrl:@"http://gw.api.taobao.com/router/rest"];  
+        //[self setApiEntryUrl:@"http://10.232.127.145/router/rest"];
         [self setAuthRefreshEntryUrl:@"https://oauth.taobao.com/token"];
         [self setTqlEntryUrl:@"http://gw.api.taobao.com/tql/2.0/json"];
         [self setAppKey:appKey];
@@ -188,6 +190,25 @@ static NSMutableDictionary *clientPools;
     if(authPool && [authPool count] > 0)
     {
         return [authPool allKeys];
+    }
+    else {
+        return nil;
+    }
+}
+
+-(NSArray *)getAllAuthUserNames
+{
+    if(authPool && [authPool count] > 0)
+    {
+        NSMutableArray *names = [[NSMutableArray alloc] init];
+        
+        for(TopAuth *t in [authPool allValues])
+        {
+            [names addObject:[t user_name]];
+        }
+        
+        return names;
+        
     }
     else {
         return nil;
@@ -507,7 +528,7 @@ static NSMutableDictionary *clientPools;
     {
         id v = [params objectForKey:k];
         
-        if ([v isKindOfClass:[NSData class]])
+        if ([v isKindOfClass:[Attachment class]])
         {
             isMultipart = true;
             [files setObject:v forKey:k];
@@ -517,8 +538,8 @@ static NSMutableDictionary *clientPools;
         }
     }
     
-    
-    [reqParams setObject:@"json" forKey:@"format"];
+    if (![reqParams objectForKey:@"format"])
+        [reqParams setObject:@"json" forKey:@"format"];
     
     if (_appKey)
         [reqParams setObject:_appKey forKey:@"app_key"];
@@ -533,6 +554,9 @@ static NSMutableDictionary *clientPools;
     
     if (userId && [authPool objectForKey:userId])
         [reqParams setObject:[[authPool objectForKey:userId] access_token]  forKey:@"session"];
+    else {
+        [reqParams setObject:[params objectForKey:@"session" ] forKey:@"session"];
+    }
     
     if (sysVersion)
         [headers setObject:sysVersion forKey:@"client_sysVersion"];
@@ -590,6 +614,12 @@ static NSMutableDictionary *clientPools;
         }
     }
     
+}
+
+- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
+{
+    NSLog(@"%@",[request URL]);
+    return YES;
 }
 
 

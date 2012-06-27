@@ -8,6 +8,7 @@
 
 #import "TopIOSUtil.h"
 #import "GTMBase64.h"
+#import "Attachment.h"
 
 @implementation NSData (TOPEncode)
 
@@ -111,16 +112,17 @@
 
 +(void)setMultipartPostBody:(NSMutableURLRequest *)req reqParams:(NSMutableDictionary *)reqParams attachs:(NSMutableDictionary *)attachs
 {
-    NSMutableData *requestData = [[NSMutableData alloc] init];
+    NSMutableString *requestData = [[NSMutableString alloc] init];
     NSString *requestBoundary = [NSString stringWithString:@"txwe9802"];
-    [requestData appendData:[[NSString stringWithFormat:@"--%@\r\n", requestBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [requestData appendFormat:@"--%@\r\n", requestBoundary];
     
     
-    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=\"%@\"", requestBoundary];
+    NSString *contentType = [NSString stringWithFormat:@"multipart/form-data; boundary=%@", requestBoundary];
     
     [req setValue:contentType forHTTPHeaderField:@"Content-Type"];
     
     NSArray *keys = [reqParams allKeys];
+    
     for (id k in keys){
         [TopIOSUtil setString:[reqParams objectForKey:k] forField:k requestData:requestData requestBoundary:requestBoundary];
     }
@@ -130,38 +132,35 @@
         [TopIOSUtil setData:[attachs objectForKey:k] forField:k requestData:requestData requestBoundary:requestBoundary];  
     }
     
-    [requestData appendData:[[NSString stringWithFormat:@"--%@--\r\n", requestBoundary] dataUsingEncoding:NSUTF8StringEncoding]];    
     
-    [req setHTTPBody:requestData];
+    [requestData appendFormat:@"--%@--\r\n", requestBoundary];    
+    
+
+    NSData *d = [requestData dataUsingEncoding:NSUTF8StringEncoding];
+    [req setHTTPBody:d];
     
 }
 
-+(void)setString:(NSString *)string forField:(NSString *)fieldName requestData:(NSMutableData *)requestData requestBoundary:(NSString *)requestBoundary {
++(void)setString:(NSString *)string forField:(NSString *)fieldName requestData:(NSMutableString *)requestData requestBoundary:(NSString *)requestBoundary {
     
     
-    NSMutableString *fieldString = [NSMutableString string];
+    [requestData appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", fieldName];
+    [requestData appendFormat:@"%@\r\n", string];
     
-    [fieldString appendFormat:@"Content-Disposition: form-data; name=\"%@\"\r\n\r\n", fieldName];
-    [fieldString appendFormat:@"%@\r\n", string];
-    [fieldString appendFormat:@"--%@\r\n", requestBoundary];
-    
-    [requestData appendData:[fieldString dataUsingEncoding:NSUTF8StringEncoding]];
-    
-    
+    [requestData appendFormat:@"--%@\r\n", requestBoundary];
 }
 
 
-+(void)setData:(NSData *)data forField:(NSString *)fieldName requestData:(NSMutableData *)requestData requestBoundary:(NSString *)requestBoundary{
++(void)setData:(Attachment *)image forField:(NSString *)fieldName requestData:(NSMutableString *)requestData requestBoundary:(NSString *)requestBoundary {
     
-    NSMutableString *fieldString = [NSMutableString string];
+    [requestData appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"%@\"\r\n",fieldName,[image name]];
+    [requestData appendString:@"Content-Type: application/octet-stream\r\n\r\n"];
     
-    [fieldString appendFormat:@"Content-Disposition: form-data; name=\"%@\"; filename=\"file\"\r\n", fieldName];
-    [fieldString appendString:@"Content-Type: application/octet-stream\r\n\r\n"];
     
-    [requestData appendData:[fieldString dataUsingEncoding:NSUTF8StringEncoding]];
-    [requestData appendData:data];
-    [requestData appendData:[[NSString stringWithString:@"\r\n"] dataUsingEncoding:NSUTF8StringEncoding]];
-    [requestData appendData:[[NSString stringWithFormat:@"--%@\r\n", requestBoundary] dataUsingEncoding:NSUTF8StringEncoding]];
+    [requestData appendString:[[image data] base64EncodedString]];
+    [requestData appendString:@"\r\n"];
+    
+    [requestData appendFormat:@"--%@\r\n", requestBoundary];
     
 }
 

@@ -22,6 +22,9 @@
 		18A095CE15908FC9007A9C68 /* GTMDefines.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A095C815908FC9007A9C68 /* GTMDefines.h */; };
 		18A095D115908FD6007A9C68 /* TopIOSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A095CF15908FD6007A9C68 /* TopIOSUtil.m */; };
 		18A095D215908FD6007A9C68 /* TopIOSUtil.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A095D015908FD6007A9C68 /* TopIOSUtil.h */; };
+		18A2793C159AC8B1002A8C49 /* Attachment.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A2793A159AC8B1002A8C49 /* Attachment.h */; };
+		18A2793D159AC8B1002A8C49 /* Attachment.m in Sources */ = {isa = PBXBuildFile; fileRef = 18A2793B159AC8B1002A8C49 /* Attachment.m */; };
+		18A2793E159AC950002A8C49 /* Attachment.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18A2793A159AC8B1002A8C49 /* Attachment.h */; };
 		18BC8B26159947B100EE99CE /* TopAuthView.h in Headers */ = {isa = PBXBuildFile; fileRef = 18BC8B24159947B100EE99CE /* TopAuthView.h */; };
 		18BC8B27159947B100EE99CE /* TopAuthView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18BC8B25159947B100EE99CE /* TopAuthView.m */; };
 /* End PBXBuildFile section */
@@ -33,6 +36,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
+				18A2793E159AC950002A8C49 /* Attachment.h in CopyFiles */,
 				1813C2C41598B9200095CECA /* TopIOSSdk.h in CopyFiles */,
 				1813C2C31598B91C0095CECA /* TopIOSClient.h in CopyFiles */,
 				1813C2C21598B9160095CECA /* TopAuth.h in CopyFiles */,
@@ -56,6 +60,8 @@
 		18A095C815908FC9007A9C68 /* GTMDefines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMDefines.h; sourceTree = "<group>"; };
 		18A095CF15908FD6007A9C68 /* TopIOSUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopIOSUtil.m; sourceTree = "<group>"; };
 		18A095D015908FD6007A9C68 /* TopIOSUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopIOSUtil.h; sourceTree = "<group>"; };
+		18A2793A159AC8B1002A8C49 /* Attachment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Attachment.h; sourceTree = "<group>"; };
+		18A2793B159AC8B1002A8C49 /* Attachment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Attachment.m; sourceTree = "<group>"; };
 		18BC8B24159947B100EE99CE /* TopAuthView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAuthView.h; sourceTree = "<group>"; };
 		18BC8B25159947B100EE99CE /* TopAuthView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopAuthView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -102,6 +108,8 @@
 		18A0959F15907FA3007A9C68 /* TopIOSSdk */ = {
 			isa = PBXGroup;
 			children = (
+				18A2793A159AC8B1002A8C49 /* Attachment.h */,
+				18A2793B159AC8B1002A8C49 /* Attachment.m */,
 				18BC8B24159947B100EE99CE /* TopAuthView.h */,
 				18BC8B25159947B100EE99CE /* TopAuthView.m */,
 				1865E87B15916AB5001B8CA9 /* TopAuth.h */,
@@ -149,6 +157,7 @@
 				18A095D215908FD6007A9C68 /* TopIOSUtil.h in Headers */,
 				1865E87D15916AB5001B8CA9 /* TopAuth.h in Headers */,
 				18BC8B26159947B100EE99CE /* TopAuthView.h in Headers */,
+				18A2793C159AC8B1002A8C49 /* Attachment.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -208,6 +217,7 @@
 				18A095D115908FD6007A9C68 /* TopIOSUtil.m in Sources */,
 				1865E87E15916AB5001B8CA9 /* TopAuth.m in Sources */,
 				18BC8B27159947B100EE99CE /* TopAuthView.m in Sources */,
+				18A2793D159AC8B1002A8C49 /* Attachment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

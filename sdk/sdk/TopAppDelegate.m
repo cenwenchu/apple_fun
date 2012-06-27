@@ -17,6 +17,8 @@
 {
     [TopIOSClient registerIOSClient:@"12131533" appSecret:@"0172b897b59ecf8e69ba1a21f37c7e62" callbackUrl:nil needAutoRefreshToken:TRUE];
     
+    [TopIOSClient registerIOSClient:@"470437" appSecret:@"99a8da374ee9c8f062284d29631bb090" callbackUrl:nil needAutoRefreshToken:TRUE];
+    
     return YES;
 }
 							

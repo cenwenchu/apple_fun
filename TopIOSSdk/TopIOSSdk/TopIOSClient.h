@@ -12,6 +12,7 @@
 #import <UIKit/UIKit.h>
 #import "TopIOSSdk.h"
 #import "TopAuth.h"
+#import "Attachment.h"
 
 @interface TopIOSClient : NSObject <TopIOSSdk,UIWebViewDelegate>
 
@@ -34,6 +35,7 @@
 -(void)setAuthByUserId:(NSString *)user_id auth:(TopAuth *)auth;
 //获得当前所有授权用户的userid
 -(NSArray *)getAllAuthUserIds;
+-(NSArray *)getAllAuthUserNames;
 
 //将所有内存中的授权持久化到userdefaults中,默认自动会持久化，不需要调用
 -(void)storeAuthPools;
