@@ -109,7 +109,7 @@
         }
         
         TopIOSClient *iosClient =[TopIOSClient getIOSClientByAppKey:@"12131533"];
-        [iosClient api:@"GET" params:params target:self cb:@selector(showApiResponse:) userId:uid];
+        [iosClient api:@"POST" params:params target:self cb:@selector(showApiResponse:) userId:uid];
         
     }
     else {

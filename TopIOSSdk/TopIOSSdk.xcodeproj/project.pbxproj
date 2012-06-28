@@ -12,6 +12,8 @@
 		1813C2C41598B9200095CECA /* TopIOSSdk.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 18A095C415908FC9007A9C68 /* TopIOSSdk.h */; };
 		1865E87D15916AB5001B8CA9 /* TopAuth.h in Headers */ = {isa = PBXBuildFile; fileRef = 1865E87B15916AB5001B8CA9 /* TopAuth.h */; };
 		1865E87E15916AB5001B8CA9 /* TopAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 1865E87C15916AB5001B8CA9 /* TopAuth.m */; };
+		187969D8159BE8D000571169 /* TopOpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 187969D6159BE8D000571169 /* TopOpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		187969D9159BE8D000571169 /* TopOpenUDID.h in Headers */ = {isa = PBXBuildFile; fileRef = 187969D7159BE8D000571169 /* TopOpenUDID.h */; };
 		18A0959E15907FA3007A9C68 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A0959D15907FA3007A9C68 /* Foundation.framework */; };
 		18A095C115908D26007A9C68 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 18A095C015908D26007A9C68 /* UIKit.framework */; };
 		18A095C915908FC9007A9C68 /* TopIOSClient.h in Headers */ = {isa = PBXBuildFile; fileRef = 18A095C215908FC9007A9C68 /* TopIOSClient.h */; };
@@ -48,6 +50,8 @@
 /* Begin PBXFileReference section */
 		1865E87B15916AB5001B8CA9 /* TopAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAuth.h; sourceTree = "<group>"; };
 		1865E87C15916AB5001B8CA9 /* TopAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopAuth.m; sourceTree = "<group>"; };
+		187969D6159BE8D000571169 /* TopOpenUDID.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TopOpenUDID.m; sourceTree = "<group>"; };
+		187969D7159BE8D000571169 /* TopOpenUDID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopOpenUDID.h; sourceTree = "<group>"; };
 		18A0959A15907FA3007A9C68 /* libTopIOSSdk.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTopIOSSdk.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		18A0959D15907FA3007A9C68 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		18A095A115907FA3007A9C68 /* TopIOSSdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "TopIOSSdk-Prefix.pch"; sourceTree = "<group>"; };
@@ -108,6 +112,8 @@
 		18A0959F15907FA3007A9C68 /* TopIOSSdk */ = {
 			isa = PBXGroup;
 			children = (
+				187969D6159BE8D000571169 /* TopOpenUDID.m */,
+				187969D7159BE8D000571169 /* TopOpenUDID.h */,
 				18A2793A159AC8B1002A8C49 /* Attachment.h */,
 				18A2793B159AC8B1002A8C49 /* Attachment.m */,
 				18BC8B24159947B100EE99CE /* TopAuthView.h */,
@@ -158,6 +164,7 @@
 				1865E87D15916AB5001B8CA9 /* TopAuth.h in Headers */,
 				18BC8B26159947B100EE99CE /* TopAuthView.h in Headers */,
 				18A2793C159AC8B1002A8C49 /* Attachment.h in Headers */,
+				187969D9159BE8D000571169 /* TopOpenUDID.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -218,6 +225,7 @@
 				1865E87E15916AB5001B8CA9 /* TopAuth.m in Sources */,
 				18BC8B27159947B100EE99CE /* TopAuthView.m in Sources */,
 				18A2793D159AC8B1002A8C49 /* Attachment.m in Sources */,
+				187969D8159BE8D000571169 /* TopOpenUDID.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

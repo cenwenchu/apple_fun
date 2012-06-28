@@ -10,6 +10,7 @@
 		1807EF1E1587A27800B9F777 /* tt.png in Resources */ = {isa = PBXBuildFile; fileRef = 1807EF1D1587A27800B9F777 /* tt.png */; };
 		1875F63D1599FA6B002D51FE /* TopIOSUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 1875F63C1599FA6B002D51FE /* TopIOSUtil.m */; };
 		1875F63F1599FD84002D51FE /* GTMBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = 1875F63E1599FD84002D51FE /* GTMBase64.m */; };
+		187969DB159C0BA300571169 /* TopOpenUDID.m in Sources */ = {isa = PBXBuildFile; fileRef = 187969DA159C0BA300571169 /* TopOpenUDID.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		188D947A157CA72600DA8AA2 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188D9479157CA72600DA8AA2 /* UIKit.framework */; };
 		188D947C157CA72600DA8AA2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188D947B157CA72600DA8AA2 /* Foundation.framework */; };
 		188D947E157CA72600DA8AA2 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 188D947D157CA72600DA8AA2 /* CoreGraphics.framework */; };
@@ -33,6 +34,7 @@
 		1875F63C1599FA6B002D51FE /* TopIOSUtil.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TopIOSUtil.m; path = ../TopIOSSdk/TopIOSSdk/TopIOSUtil.m; sourceTree = "<group>"; };
 		1875F63E1599FD84002D51FE /* GTMBase64.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = GTMBase64.m; path = ../TopIOSSdk/TopIOSSdk/encoding/GTMBase64.m; sourceTree = "<group>"; };
 		1875F6401599FD9F002D51FE /* GTMBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GTMBase64.h; path = ../TopIOSSdk/TopIOSSdk/encoding/GTMBase64.h; sourceTree = "<group>"; };
+		187969DA159C0BA300571169 /* TopOpenUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TopOpenUDID.m; path = ../TopIOSSdk/TopIOSSdk/TopOpenUDID.m; sourceTree = "<group>"; };
 		188D9475157CA72600DA8AA2 /* sdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sdk.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		188D9479157CA72600DA8AA2 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		188D947B157CA72600DA8AA2 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -74,6 +76,7 @@
 		188D946A157CA72600DA8AA2 = {
 			isa = PBXGroup;
 			children = (
+				187969DA159C0BA300571169 /* TopOpenUDID.m */,
 				1875F6401599FD9F002D51FE /* GTMBase64.h */,
 				1875F63E1599FD84002D51FE /* GTMBase64.m */,
 				1875F63C1599FA6B002D51FE /* TopIOSUtil.m */,
@@ -200,6 +203,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				187969DB159C0BA300571169 /* TopOpenUDID.m in Sources */,
 				1875F63F1599FD84002D51FE /* GTMBase64.m in Sources */,
 				1875F63D1599FA6B002D51FE /* TopIOSUtil.m in Sources */,
 				18E6A047159887DE003ACA08 /* TopIOSClient.m in Sources */,

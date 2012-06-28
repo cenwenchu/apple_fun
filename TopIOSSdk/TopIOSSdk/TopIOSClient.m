@@ -9,6 +9,7 @@
 #import "TopIOSClient.h"
 #import "TopIOSUtil.h"
 #import "TopAuthView.h"
+#import "TopOpenUDID.h"
 
 
 @interface TopIOSClient()
@@ -19,8 +20,7 @@
 
     @property(copy,atomic) NSString *sysName;
     @property(copy,atomic) NSString *sysVersion;
-    @property(copy,atomic) NSString *packageVersion;
-    @property(copy,atomic) NSString *packageUUID;
+    @property(copy,atomic) NSString *deviceUUID;
 
     @property NSOperationQueue *queue;
     //授权展示页面
@@ -63,8 +63,7 @@ static NSMutableDictionary *clientPools;
 //client config
 @synthesize sysName;
 @synthesize sysVersion;
-@synthesize packageVersion;
-@synthesize packageUUID;
+@synthesize deviceUUID;
 
 
 //注册不同的appkey的ios客户端,需要提供appkey，appsecretcode，回调地址（保持和appkey注册的时候填入的回调地址一级域名一致），是否需要自动刷新access_token（在freshtoken有效期内）
@@ -136,9 +135,8 @@ static NSMutableDictionary *clientPools;
 
 -(void)config
 {
-    //由于static library无法带有文件，因此暂时先写入
-    [self setPackageUUID:@"1Bxdwylyb8*(gxhw"];
-    [self setPackageVersion:@"top_ios_version_2012_0.1"];
+    [self setDeviceUUID:[TopOpenUDID value]];
+    NSLog(@"current device UUID: %@",[self deviceUUID]);
 }
 
 -(void)storeAuthPools 
@@ -185,35 +183,17 @@ static NSMutableDictionary *clientPools;
     
 }
 
--(NSArray *)getAllAuthUserIds
+-(NSArray *)getAllAuths;
 {
     if(authPool && [authPool count] > 0)
     {
-        return [authPool allKeys];
+        return [authPool allValues];
     }
     else {
         return nil;
     }
 }
 
--(NSArray *)getAllAuthUserNames
-{
-    if(authPool && [authPool count] > 0)
-    {
-        NSMutableArray *names = [[NSMutableArray alloc] init];
-        
-        for(TopAuth *t in [authPool allValues])
-        {
-            [names addObject:[t user_name]];
-        }
-        
-        return names;
-        
-    }
-    else {
-        return nil;
-    }
-}
 
 -(TopAuth *)getAuthByUserId:(NSString *)user_id
 {
@@ -241,8 +221,7 @@ static NSMutableDictionary *clientPools;
     [self setTopAuthView:nil];
     [self setSysVersion:nil];
     [self setSysName:nil];
-    [self setPackageVersion:nil];
-    [self setPackageUUID:nil];
+    [self setDeviceUUID:nil];
     [self setTqlEntryUrl:nil];
     authPool = nil;
     
@@ -273,6 +252,40 @@ static NSMutableDictionary *clientPools;
     }
 }
 
+-(void)addClientAuthHeader:(NSMutableURLRequest *)req topAuth:(TopAuth *)topAuth timestamp:(NSString *)timestamp
+{
+    NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
+    
+    if (sysVersion)
+        [headers setObject:sysVersion forKey:@"client_sysVersion"];
+    
+    if (sysName)
+        [headers setObject:sysName forKey:@"client_sysName"];
+    
+    if (!timestamp)
+    {
+        NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+        
+        NSString *timestamp = [dateFormatter stringFromDate:[NSDate date]];
+        [headers setObject:timestamp forKey:@"timestamp"]; 
+    }
+    else {
+        [headers setObject:timestamp forKey:@"timestamp"];
+    }
+    
+    
+    NSString * track_id = nil;
+    if (topAuth)
+    {
+        track_id = [self makeTrackId:[topAuth user_id] timestamp:timestamp];
+    }
+    [headers setObject:track_id forKey:@"track_id"];
+    [headers setObject:deviceUUID forKey:@"device_uuid"];
+    
+    [req setAllHTTPHeaderFields:headers];
+}
+
 -(void)refreshToken:(TopAuth *)topAuth
 {
     if(topAuth && [topAuth refresh_interval] > 0)
@@ -288,8 +301,6 @@ static NSMutableDictionary *clientPools;
             [topAuth setBeg_time:now];
             
             NSMutableDictionary *reqParams = [[NSMutableDictionary alloc] init];
-            NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
-            
             
             [reqParams setObject:_appKey forKey:@"client_id"];
             [reqParams setObject:_appSecret forKey:@"client_secret"];
@@ -297,26 +308,6 @@ static NSMutableDictionary *clientPools;
             [reqParams setObject:[topAuth refresh_token] forKey:@"refresh_token"];
             
             NSLog(@" token userId: %@",[topAuth user_id]);
-            
-            if (sysVersion)
-                [headers setObject:sysVersion forKey:@"client_sysVersion"];
-            
-            if (sysName)
-                [headers setObject:sysName forKey:@"client_sysName"];
-            
-            NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-            [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
-            NSString *timestamp = [dateFormatter stringFromDate:[NSDate date]];
-            [headers setObject:timestamp forKey:@"timestamp"];
-            
-            NSString * track_id = nil;
-            if (topAuth)
-            {
-                track_id = [self makeTrackId:[topAuth user_id] timestamp:timestamp];
-            }
-            [headers setObject:track_id forKey:@"track_id"];
-            [headers setObject:packageVersion forKey:@"packageVersion"];
-            
             
             NSMutableString *body = [[NSMutableString alloc]init];
             NSURL *url = [NSURL URLWithString:_authRefreshEntryUrl];
@@ -339,7 +330,7 @@ static NSMutableDictionary *clientPools;
             
             
             [req setHTTPMethod:@"POST"];
-            [req setAllHTTPHeaderFields:headers];
+            [self addClientAuthHeader:req topAuth:topAuth timestamp:nil];
             
             NSOperationQueue *q = [[NSOperationQueue alloc] init];
             
@@ -391,7 +382,9 @@ static NSMutableDictionary *clientPools;
                                               params:params httpMethod:@"GET"];
 
     
-    NSURLRequest *req = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:urlString]];
+    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:urlString]];
+    
+    [self addClientAuthHeader:req topAuth:nil timestamp:nil];
     
     [[self topAuthView] setCallback:cb];
     [[self topAuthView] setTarget:target];
@@ -427,7 +420,7 @@ static NSMutableDictionary *clientPools;
     [s appendString:@"-"];
     [s appendString:_appSecret];
     [s appendString:@"-"];
-    [s appendString:packageUUID];
+    [s appendString:deviceUUID];
     [s appendString:@"-"];
     [s appendString:timestamp];
     
@@ -457,9 +450,8 @@ static NSMutableDictionary *clientPools;
 {
     NSMutableDictionary *reqParams = [[NSMutableDictionary alloc] init];
     NSMutableDictionary *files = [[NSMutableDictionary alloc] init];
-    NSMutableDictionary *headers = [[NSMutableDictionary alloc] init];
     
-    Boolean isMultipart = [self prepareRequest:params reqParams:reqParams files:files headers:headers userId:userId];
+    Boolean isMultipart = [self prepareRequest:params reqParams:reqParams files:files userId:userId];
     
     
     NSMutableString *body = [[NSMutableString alloc]init];
@@ -502,7 +494,15 @@ static NSMutableDictionary *clientPools;
     }
     
     [req setHTTPMethod:[method uppercaseString]];
-    [req setAllHTTPHeaderFields:headers];
+    
+    if (userId && [authPool objectForKey:userId])
+    {
+        [self addClientAuthHeader:req topAuth:[authPool objectForKey:userId] timestamp:[reqParams objectForKey:@"timestamp"]];
+    }
+    else {
+        [self addClientAuthHeader:req topAuth:nil timestamp:[reqParams objectForKey:@"timestamp"]];
+    }
+
     
     
     [NSURLConnection sendAsynchronousRequest:req queue:queue completionHandler:^(NSURLResponse *resp,NSData *data,NSError *error){
@@ -518,7 +518,7 @@ static NSMutableDictionary *clientPools;
     }];
 }
 
--(Boolean)prepareRequest:(NSDictionary *)params reqParams:(NSMutableDictionary *)reqParams files:(NSMutableDictionary *)files headers:(NSMutableDictionary *) headers userId:(NSString *)userId
+-(Boolean)prepareRequest:(NSDictionary *)params reqParams:(NSMutableDictionary *)reqParams files:(NSMutableDictionary *)files userId:(NSString *)userId
 {
     Boolean isMultipart = false;
     
@@ -558,27 +558,6 @@ static NSMutableDictionary *clientPools;
         [reqParams setObject:[params objectForKey:@"session" ] forKey:@"session"];
     }
     
-    if (sysVersion)
-        [headers setObject:sysVersion forKey:@"client_sysVersion"];
-    
-    if (sysName)
-        [headers setObject:sysName forKey:@"client_sysName"];
-    
-    NSString * track_id = nil;
-    
-    if (userId && [authPool objectForKey:userId])
-    {
-        track_id = [self makeTrackId:userId timestamp:timestamp];
-    }
-    else {
-        track_id = [self makeTrackId:nil timestamp:timestamp];
-    }
-    
-    [headers setObject:track_id forKey:@"track_id"];
-    [headers setObject:timestamp forKey:@"timestamp"];
-    [headers setObject:packageVersion forKey:@"packageVersion"];
-    
-    
     [TopIOSUtil sign:reqParams appSecret:_appSecret];
     
     return isMultipart;
@@ -614,12 +593,6 @@ static NSMutableDictionary *clientPools;
         }
     }
     
-}
-
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    NSLog(@"%@",[request URL]);
-    return YES;
 }
 
 

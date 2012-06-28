@@ -33,9 +33,10 @@
 -(TopAuth *)getAuthByUserId:(NSString *)user_id;
 //通过接口存储内部某一个user_id的授权
 -(void)setAuthByUserId:(NSString *)user_id auth:(TopAuth *)auth;
-//获得当前所有授权用户的userid
--(NSArray *)getAllAuthUserIds;
--(NSArray *)getAllAuthUserNames;
+
+
+//获得当前所有授权用户的授权信息
+-(NSArray *)getAllAuths;
 
 //将所有内存中的授权持久化到userdefaults中,默认自动会持久化，不需要调用
 -(void)storeAuthPools;
