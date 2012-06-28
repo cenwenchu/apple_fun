@@ -307,11 +307,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "461"
-         endingLineNumber = "461"
+         startingLineNumber = "465"
+         endingLineNumber = "465"
          landmarkName = "-call:method:params:target:cb:userId:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -333,11 +333,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "386"
-         endingLineNumber = "386"
+         startingLineNumber = "390"
+         endingLineNumber = "390"
          landmarkName = "-auth:cb:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -346,11 +346,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "386"
-         endingLineNumber = "386"
+         startingLineNumber = "390"
+         endingLineNumber = "390"
          landmarkName = "-auth:cb:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -385,11 +385,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "386"
-         endingLineNumber = "386"
+         startingLineNumber = "390"
+         endingLineNumber = "390"
          landmarkName = "-auth:cb:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -398,11 +398,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "386"
-         endingLineNumber = "386"
+         startingLineNumber = "390"
+         endingLineNumber = "390"
          landmarkName = "-auth:cb:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -424,11 +424,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "410"
-         endingLineNumber = "410"
+         startingLineNumber = "414"
+         endingLineNumber = "414"
          landmarkName = "-oauthCallback:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -437,11 +437,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362589136.492535"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "592"
-         endingLineNumber = "592"
+         startingLineNumber = "599"
+         endingLineNumber = "599"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -541,11 +541,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "471"
-         endingLineNumber = "471"
+         startingLineNumber = "475"
+         endingLineNumber = "475"
          landmarkName = "-call:method:params:target:cb:userId:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -567,11 +567,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362587235.79233"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "544"
-         endingLineNumber = "544"
+         startingLineNumber = "548"
+         endingLineNumber = "548"
          landmarkName = "-prepareRequest:reqParams:files:userId:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -580,11 +580,11 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362589136.492535"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "584"
-         endingLineNumber = "584"
+         startingLineNumber = "591"
+         endingLineNumber = "591"
          landmarkName = "-webViewDidFinishLoad:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -671,24 +671,24 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
-         timestampString = "362554970.596213"
+         timestampString = "362589136.492535"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "615"
-         endingLineNumber = "615"
-         landmarkName = "@implementation TopIOSClient"
-         landmarkType = "3">
+         startingLineNumber = "622"
+         endingLineNumber = "622"
+         landmarkName = "-hideAuthView"
+         landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
          shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopOpenUDID.m"
-         timestampString = "362548265.621203"
+         timestampString = "362588739.82021"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "174"
-         endingLineNumber = "174"
+         startingLineNumber = "176"
+         endingLineNumber = "176"
          landmarkName = "+valueWithError:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -697,12 +697,129 @@
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          filePath = "../TopIOSSdk/TopIOSSdk/TopOpenUDID.m"
-         timestampString = "362548400.808903"
+         timestampString = "362588739.82021"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "252"
-         endingLineNumber = "252"
+         startingLineNumber = "254"
+         endingLineNumber = "254"
          landmarkName = "+valueWithError:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
+         timestampString = "362587235.79233"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "375"
+         endingLineNumber = "375"
+         landmarkName = "-auth:cb:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSUtil.m"
+         timestampString = "362586879.250373"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "76"
+         endingLineNumber = "76"
+         landmarkName = "+stringFromDictionary:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSUtil.m"
+         timestampString = "362586882.522064"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "75"
+         endingLineNumber = "75"
+         landmarkName = "+stringFromDictionary:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSUtil.m"
+         timestampString = "362586895.359844"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "90"
+         endingLineNumber = "90"
+         landmarkName = "+serializeURL:params:httpMethod:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
+         timestampString = "362587241.559767"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "257"
+         endingLineNumber = "257"
+         landmarkName = "-addClientAuthHeader:topAuth:timestamp:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
+         timestampString = "362587295.913216"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "440"
+         endingLineNumber = "440"
+         landmarkName = "-makeTrackId:timestamp:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
+         timestampString = "362587332.456303"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "290"
+         endingLineNumber = "290"
+         landmarkName = "-addClientAuthHeader:topAuth:timestamp:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopOpenUDID.m"
+         timestampString = "362588739.82021"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "168"
+         endingLineNumber = "168"
+         landmarkName = "+valueWithError:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "../TopIOSSdk/TopIOSSdk/TopIOSClient.m"
+         timestampString = "362589043.310723"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "559"
+         endingLineNumber = "559"
+         landmarkName = "-prepareRequest:reqParams:files:userId:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

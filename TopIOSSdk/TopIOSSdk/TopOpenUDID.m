@@ -125,12 +125,18 @@ static int const kOpenUDIDRedundancySlots = 100;
     // Collision is possible of course, but unlikely and suitable for most industry needs (e.g. aggregate tracking)
     //
     if (_openUDID==nil) {
-        CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
-        CFStringRef cfstring = CFUUIDCreateString(kCFAllocatorDefault, uuid);
-        const char *cStr = CFStringGetCStringPtr(cfstring,CFStringGetFastestEncoding(cfstring));
-        unsigned char result[16];
-        CC_MD5( cStr, strlen(cStr), result );
+        //CFUUIDRef uuid = CFUUIDCreate(kCFAllocatorDefault);
+        //CFStringRef cfstring = CFUUIDCreateString(kCFAllocatorDefault, uuid);
+        //const char *cStr = CFStringGetCStringPtr(cfstring,CFStringGetFastestEncoding(cfstring));
+        
+        // generate a new uuid and store it in user defaults
+        CFUUIDRef uuid = CFUUIDCreate(NULL);
+        NSString  *cStr = [(NSString *) CFUUIDCreateString(NULL, uuid) autorelease];
         CFRelease(uuid);
+        
+        unsigned char result[16];
+        CC_MD5( cStr, [cStr length], result );
+        //CFRelease(uuid);
 
         _openUDID = [NSString stringWithFormat:
                 @"%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%02x%08x",
@@ -180,7 +186,7 @@ static int const kOpenUDIDRedundancySlots = 100;
     {
       // generate a new uuid and store it in user defaults
       CFUUIDRef uuid = CFUUIDCreate(NULL);
-      appUID = (NSString *) CFUUIDCreateString(NULL, uuid);
+      appUID = [(NSString *) CFUUIDCreateString(NULL, uuid) autorelease];
       CFRelease(uuid);
     }
   

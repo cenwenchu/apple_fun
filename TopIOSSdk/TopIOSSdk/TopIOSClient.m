@@ -278,8 +278,12 @@ static NSMutableDictionary *clientPools;
     NSString * track_id = nil;
     if (topAuth)
     {
-        track_id = [self makeTrackId:[topAuth user_id] timestamp:timestamp];
+        track_id = [self makeTrackId:[topAuth user_id] timestamp:[headers objectForKey:@"timestamp"]];
     }
+    else {
+        track_id = [self makeTrackId:nil timestamp:[headers objectForKey:@"timestamp"]];
+    }
+    
     [headers setObject:track_id forKey:@"track_id"];
     [headers setObject:deviceUUID forKey:@"device_uuid"];
     
@@ -555,7 +559,10 @@ static NSMutableDictionary *clientPools;
     if (userId && [authPool objectForKey:userId])
         [reqParams setObject:[[authPool objectForKey:userId] access_token]  forKey:@"session"];
     else {
-        [reqParams setObject:[params objectForKey:@"session" ] forKey:@"session"];
+        if ([params objectForKey:@"session"])
+        {
+            [reqParams setObject:[params objectForKey:@"session" ] forKey:@"session"];
+        }
     }
     
     [TopIOSUtil sign:reqParams appSecret:_appSecret];

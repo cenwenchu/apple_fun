@@ -52,7 +52,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "443"
          endingLineNumber = "443"
-         landmarkName = "-call:method:params:target:cb:userId:"
+         landmarkName = "-api:params:target:cb:userId:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -118,6 +118,32 @@
          startingLineNumber = "240"
          endingLineNumber = "240"
          landmarkName = "-refreshAllToken"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TopIOSSdk/TopOpenUDID.m"
+         timestampString = "362587873.195156"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "166"
+         endingLineNumber = "166"
+         landmarkName = "+valueWithError:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "TopIOSSdk/TopIOSClient.m"
+         timestampString = "362589030.329024"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "559"
+         endingLineNumber = "559"
+         landmarkName = "-prepareRequest:reqParams:files:userId:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
