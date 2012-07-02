@@ -6,11 +6,17 @@
 //  Copyright (c) 2012年 __MyCompanyName__. All rights reserved.
 //
 
-#import "Attachment.h"
+#import "TopAttachment.h"
 
-@implementation Attachment
+@implementation TopAttachment
 
 @synthesize name;
 @synthesize data;
+
+-(void)dealloc
+{
+    [self setName:nil];
+    [self setData:nil];
+}
 
 @end

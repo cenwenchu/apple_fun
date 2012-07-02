@@ -532,7 +532,7 @@ static NSMutableDictionary *clientPools;
     {
         id v = [params objectForKey:k];
         
-        if ([v isKindOfClass:[Attachment class]])
+        if ([v isKindOfClass:[TopAttachment class]])
         {
             isMultipart = true;
             [files setObject:v forKey:k];

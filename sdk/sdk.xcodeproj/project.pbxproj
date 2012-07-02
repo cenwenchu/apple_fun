@@ -26,9 +26,6 @@
 
 /* Begin PBXFileReference section */
 		1807EF1D1587A27800B9F777 /* tt.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tt.png; sourceTree = "<group>"; };
-		1813C2C71598BF680095CECA /* TopAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopAuth.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopAuth.h"; sourceTree = "<group>"; };
-		1813C2C81598BF680095CECA /* TopIOSClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopIOSClient.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSClient.h"; sourceTree = "<group>"; };
-		1813C2C91598BF680095CECA /* TopIOSSdk.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TopIOSSdk.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSSdk.h"; sourceTree = "<group>"; };
 		18237B7F159CA6F90066E9A0 /* TopOpenUDID.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TopOpenUDID.m; path = ../TopIOSSdk/TopIOSSdk/TopOpenUDID.m; sourceTree = "<group>"; };
 		18237B83159CA7810066E9A0 /* libTopIOSSdk.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libTopIOSSdk.a; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/libTopIOSSdk.a"; sourceTree = "<group>"; };
 		188D9475157CA72600DA8AA2 /* sdk.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sdk.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -39,16 +36,19 @@
 		188D9483157CA72600DA8AA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		188D9485157CA72600DA8AA2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		188D9487157CA72600DA8AA2 /* sdk-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "sdk-Prefix.pch"; sourceTree = "<group>"; };
-		188D9488157CA72600DA8AA2 /* TopAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopAppDelegate.h; sourceTree = "<group>"; };
 		188D9489157CA72600DA8AA2 /* TopAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopAppDelegate.m; sourceTree = "<group>"; };
 		188D948C157CA72600DA8AA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		188D948F157CA72600DA8AA2 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		188D9491157CA72600DA8AA2 /* TopViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TopViewController.h; sourceTree = "<group>"; };
 		188D9492157CA72600DA8AA2 /* TopViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TopViewController.m; sourceTree = "<group>"; };
-		18A2793F159AC986002A8C49 /* Attachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = Attachment.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphoneos/Attachment.h"; sourceTree = "<group>"; };
 		18BC0B4F159CA2B9003719D7 /* TopIOSClient.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = TopIOSClient.m; path = ../TopIOSSdk/TopIOSSdk/TopIOSClient.m; sourceTree = "<group>"; };
 		18CBBD481589916E00D21AE5 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		18CBBD4B1589917500D21AE5 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		18E7209615A14180005AE4ED /* TopAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TopAppDelegate.h; sourceTree = "<group>"; };
+		18E7209815A141B4005AE4ED /* TopAttachment.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TopAttachment.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopAttachment.h"; sourceTree = "<group>"; };
+		18E7209915A141B4005AE4ED /* TopAuth.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TopAuth.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopAuth.h"; sourceTree = "<group>"; };
+		18E7209A15A141B4005AE4ED /* TopIOSClient.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TopIOSClient.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSClient.h"; sourceTree = "<group>"; };
+		18E7209B15A141B4005AE4ED /* TopIOSSdk.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = TopIOSSdk.h; path = "../../../../../Library/Developer/Xcode/DerivedData/TopIOSSdk-coybigcqjkwptybnkjprpjuhladi/Build/Products/Debug-iphonesimulator/TopIOSSdk.h"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,11 +103,11 @@
 		188D947F157CA72600DA8AA2 /* sdk */ = {
 			isa = PBXGroup;
 			children = (
-				18A2793F159AC986002A8C49 /* Attachment.h */,
-				1813C2C71598BF680095CECA /* TopAuth.h */,
-				1813C2C81598BF680095CECA /* TopIOSClient.h */,
-				1813C2C91598BF680095CECA /* TopIOSSdk.h */,
-				188D9488157CA72600DA8AA2 /* TopAppDelegate.h */,
+				18E7209815A141B4005AE4ED /* TopAttachment.h */,
+				18E7209915A141B4005AE4ED /* TopAuth.h */,
+				18E7209A15A141B4005AE4ED /* TopIOSClient.h */,
+				18E7209B15A141B4005AE4ED /* TopIOSSdk.h */,
+				18E7209615A14180005AE4ED /* TopAppDelegate.h */,
 				188D9489157CA72600DA8AA2 /* TopAppDelegate.m */,
 				188D948B157CA72600DA8AA2 /* MainStoryboard_iPhone.storyboard */,
 				188D948E157CA72600DA8AA2 /* MainStoryboard_iPad.storyboard */,

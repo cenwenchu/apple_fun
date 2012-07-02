@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Attachment : NSObject
+@interface TopAttachment : NSObject
 
 @property(copy,nonatomic) NSString *name;
 @property(copy,nonatomic) NSData *data;

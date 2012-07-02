@@ -12,7 +12,7 @@
 #import <UIKit/UIKit.h>
 #import "TopIOSSdk.h"
 #import "TopAuth.h"
-#import "Attachment.h"
+#import "TopAttachment.h"
 
 @interface TopIOSClient : NSObject <TopIOSSdk,UIWebViewDelegate>
 

@@ -46,7 +46,8 @@
     
     NSString *uid = [userId text];
     
-    [params setValue:@"select num_iid,title,type,location from item where num_iid=17795332215" forKey:@"ql"];
+    //[params setValue:@"select num_iid,title,type,location from item where num_iid=17795332215" forKey:@"ql"];
+    [params setValue:@"select num_iid,title,nick,pic_url,cid,price,type,delist_time,post_fee from items where cid=50006858" forKey:@"ql"];
     
     [iosClient tql:@"GET" params:params target:self cb:@selector(showApiResponse:) userId:uid];
 }
@@ -62,12 +63,12 @@
     [params setObject:@"17795332215" forKey:@"num_iid"];
     
    
-    NSURL *url = [[NSURL alloc] initWithString:@"http://img01.taobaocdn.com/bao/uploaded/i1/T1X4TeXb0jXXX39Ro3_051047.jpg_310x310.jpg"];
+    NSURL *url = [[NSURL alloc] initWithString:@"http://upload.wikimedia.org/wikipedia/commons/d/de/POL_apple.jpg"];
     NSData *image_data = [NSData dataWithContentsOfURL:url];
     
-    Attachment *image = [[Attachment alloc]init];
+    TopAttachment *image = [[TopAttachment alloc]init];
     [image setData:image_data];
-    [image setName:@"mypic.jpg"];
+    [image setName:@"apple.jpg"];
     
     
     [params setObject:image forKey:@"image"];
